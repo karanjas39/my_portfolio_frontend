@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Journey</title>
+    <link
+      rel="shortcut icon"
+      href="./UTILS/portfolio.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./CSS/index.css" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav-links">
+        <a
+          href="#home-section"
+          class="active-nav-link"
+          data-title="Code Base"
+          data-value="home-section"
+          ><i class="fa-solid fa-house"></i
+        ></a>
+        <a
+          href="#about-section"
+          data-title="Developer's Bio"
+          class="active-nav-link"
+          data-value="about-section"
+          ><i class="fa-solid fa-user"></i
+        ></a>
+        <a
+          href="#project-section"
+          data-title="Code Showcase"
+          class="active-nav-link"
+          data-value="project-section"
+          ><i class="fa-solid fa-code"></i
+        ></a>
+        <a
+          href="#contact-section"
+          data-title="Connect API"
+          class="active-nav-link"
+          data-value="contact-section"
+          ><i class="fa-solid fa-phone"></i
+        ></a>
+        <a href="#change-theme" data-title="Change Theme"
+          ><i class="fa theme-icon fa-sun"></i
+        ></a>
+      </nav>
+    </header>
+    <div id="home-section"></div>
+    <article class="main-container">
+      <!-- *******************************************************************************HOME -->
+      <section class="home-section">
+        <h1 class="section-heading">Code <span>Base</span>.</h1>
+
+        <div class="home-inner-container">
+          <img
+            src="./UTILS/programmer-light.svg"
+            alt="SVG of a programmer writing code"
+            class="programmer-svg"
+          />
+          <div class="home-text">
+            <p>Hi there! My name is <span>Jaskaran Singh</span>.</p>
+            <p class="home__subtitle">I'm a <span id="typing"></span></p>
+            <a href="#" class="download-cv">Download CV</a>
+          </div>
+        </div>
+      </section>
+      <!-- *******************************************************************************ABOUT ME -->
+      <section class="about-section" id="about-section">
+        <h1 class="section-heading">Developer's <span>Bio</span>.</h1>
+        <div class="about-inner-container">
+          <img
+            src="./UTILS/about-light.svg"
+            alt="SVG of a man showing his certifications"
+            class="about-svg"
+          />
+          <div class="about-text">
+            <div class="about-tab-links">
+              <button class="tab-links skills active-link">Skills</button>
+              <button class="tab-links experience">Experience</button>
+              <button class="tab-links education">Education</button>
+            </div>
+            <div class="tab-contents skills active-tab">
+              <ul>
+                <li><span>NodeJS</span><br /></li>
+                <li><span>MongoDB</span><br /></li>
+                <li><span>ExpressJS</span><br /></li>
+                <li><span>Deployment</span><br /></li>
+                <li><span>HTML5 and CSS3</span><br /></li>
+                <li><span>JavaScript</span><br /></li>
+                <li><span>Version Control</span><br /></li>
+                <li><span>C/C++</span><br /></li>
+                <li><span>Responsive Web Design</span><br /></li>
+                <li><span>API Integration</span><br /></li>
+              </ul>
+            </div>
+            <div class="tab-contents experience">
+              <ul>
+                <li>
+                  <span>2023 - Current</span><br />
+                  Back-End Developer
+                </li>
+                <li>
+                  <span>2022 - Current</span><br />
+                  Front-End Developer
+                </li>
+                <li>
+                  <span>2021 - Current</span><br />
+                  C/C++ Programmer
+                </li>
+              </ul>
+            </div>
+            <div class="tab-contents education">
+              <ul>
+                <li>
+                  <span>2021 - Current</span><br />
+                  B.Tech CSE at DAV University
+                </li>
+                <li>
+                  <span>2019 - 2020</span><br />
+                  Secondary Education
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- *******************************************************************************PROJECTS -->
+      <section class="project-section" id="project-section">
+        <h1 class="section-heading">Code <span>Showcase</span>.</h1>
+        <div class="project-inner-container"></div>
+      </section>
+      <!-- *******************************************************************************CONTACT ME -->
+      <section class="contact-section" id="contact-section">
+        <h1 class="section-heading">Connect <span>API</span>.</h1>
+      </section>
+    </article>
+
+    <!-- SCRIPTS -->
+    <script src="./JS/index.js"></script>
+  </body>
+</html>
