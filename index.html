@@ -26,7 +26,7 @@
 
     <link rel="stylesheet" href="./CSS/index.css" />
   </head>
-  <body>
+  <body onload="details()">
     <header class="header">
       <nav class="nav-links">
         <a
@@ -38,7 +38,7 @@
         ></a>
         <a
           href="#about-section"
-          data-title="Developer's Bio"
+          data-title="Development Journey"
           class="active-nav-link"
           data-value="about-section"
           ><i class="fa-solid fa-user"></i
@@ -82,8 +82,8 @@
         </div>
       </section>
       <!-- *******************************************************************************ABOUT ME -->
-      <section class="about-section" id="about-section">
-        <h1 class="section-heading">Developer's <span>Bio</span>.</h1>
+      <section class="about-section hide" id="about-section">
+        <h1 class="section-heading">Development <span>Journey</span>.</h1>
         <div class="about-inner-container">
           <img
             src="./UTILS/about-light.svg"
@@ -103,11 +103,6 @@
                 <li><span>ExpressJS</span><br /></li>
                 <li><span>Deployment</span><br /></li>
                 <li><span>HTML5 and CSS3</span><br /></li>
-                <li><span>JavaScript</span><br /></li>
-                <li><span>Version Control</span><br /></li>
-                <li><span>C/C++</span><br /></li>
-                <li><span>Responsive Web Design</span><br /></li>
-                <li><span>API Integration</span><br /></li>
               </ul>
             </div>
             <div class="tab-contents experience">
@@ -142,15 +137,105 @@
         </div>
       </section>
       <!-- *******************************************************************************PROJECTS -->
-      <section class="project-section" id="project-section">
+      <section class="project-section hide" id="project-section">
         <h1 class="section-heading">Code <span>Showcase</span>.</h1>
-        <div class="project-inner-container"></div>
+        <div class="project-section-top">
+          <input
+            type="text"
+            class="search-project-inp"
+            placeholder="Search your next coding adventure..."
+          />
+          <i class="fa-solid fa-filter"></i>
+        </div>
+
+        <div class="project-inner-container">
+          <div class="project-list">
+            <div class="project-template">
+              <div class="project-name">Opentalks<span>.</span></div>
+              <div class="project-description">
+                Opentalks: A forum for university students to connect, engage,
+                and share knowledge. Request admin approval to join the vibrant
+                community where your ideas matter.
+              </div>
+              <button class="view-project">View Details</button>
+            </div>
+          </div>
+        </div>
       </section>
       <!-- *******************************************************************************CONTACT ME -->
-      <section class="contact-section" id="contact-section">
+      <section class="contact-section hide" id="contact-section">
         <h1 class="section-heading">Connect <span>API</span>.</h1>
+        <div class="contact-main-container">
+          <div class="contact-form">
+            <input
+              type="text"
+              class="contact-name"
+              placeholder="Enter Your Name"
+              required
+            />
+            <input
+              type="email"
+              class="contact-email"
+              placeholder="Your Your Email"
+              required
+            />
+            <textarea
+              class="contact-message"
+              rows="4"
+              placeholder="Type Your Message..."
+              required
+            ></textarea>
+            <button class="send-message">Send Message</button>
+          </div>
+
+          <div class="social-links">
+            <a href="#" target="_blank" class="linkedin-handle"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
+            <a href="#" target="_blank" class="github-handle"
+              ><i class="fa-brands fa-github"></i
+            ></a>
+            <a
+              href="mailto:dhillonjaskaran4486@gmail.com?subject=Hi! Jaskaran"
+              class="email-handle"
+              target="_blank"
+              ><i class="fa-solid fa-at"></i
+            ></a>
+          </div>
+
+          <footer>
+            <p>&copy; <span class="current-year">year</span></p>
+            | Developed and Designed by Jaskaran Singh.
+          </footer>
+        </div>
       </section>
     </article>
+
+    <!-- *******************************************************************************ADDITIONALS -->
+    <!-- PROJECT DETAILS -->
+    <div class="project-detail-container hide">
+      <div class="project-detail-top">
+        <h2>Project Name<span>.</span></h2>
+        <i class="fa-solid fa-xmark close-project-details"></i>
+      </div>
+      <p class="project-detail-description">
+        Description of the project goes here.
+      </p>
+    </div>
+
+    <!-- BLUR -->
+    <div class="blur hide"></div>
+
+    <!-- NOTIFICATION POPUP -->
+    <div class="popup-msg-notification">
+      <div class="popup-msg" id="notification">
+        <div class="popup-msg-content">
+          <span class="popup-msg-message">This is a notification message.</span>
+          <span class="popup-msg-close"><i class="fa-solid fa-xmark"></i></span>
+        </div>
+        <div class="popup-msg-progress"></div>
+      </div>
+    </div>
 
     <!-- SCRIPTS -->
     <script src="./JS/index.js"></script>
