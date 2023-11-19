@@ -26,7 +26,7 @@
 
     <link rel="stylesheet" href="./CSS/index.css" />
   </head>
-  <body onload="details()">
+  <body onload="details(),init()">
     <header class="header">
       <nav class="nav-links">
         <a
@@ -56,6 +56,9 @@
           class="active-nav-link"
           data-value="contact-section"
           ><i class="fa-solid fa-phone"></i
+        ></a>
+        <a href="./HTML/login.html" data-title="Login"
+          ><i class="fa-solid fa-fingerprint"></i
         ></a>
         <a href="#change-theme" data-title="Change Theme"
           ><i class="fa theme-icon fa-sun"></i
@@ -238,6 +241,7 @@
     </div>
 
     <!-- SCRIPTS -->
+    <script src="./JS/init.js"></script>
     <script src="./JS/index.js"></script>
   </body>
 </html>

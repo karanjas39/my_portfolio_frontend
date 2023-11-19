@@ -1,9 +1,5 @@
 // @collapse
-const themeMode = localStorage.getItem("theme");
 const words = ["Full stack web developer", "C/C++ Programmer"];
-
-let notificationTimeout;
-let progressBarInterval;
 
 let index = 0;
 let charIndex = 0;
@@ -13,13 +9,6 @@ let charIndex = 0;
 // ONLOAD FUNCTION
 async function details() {
   try {
-    let theme = localStorage.getItem("theme");
-    if (theme == "dark") {
-      document.documentElement.setAttribute("data-theme", "dark");
-      document.querySelector(".theme-icon").classList.value =
-        "fa theme-icon fa-moon";
-      changeImages("dark");
-    }
     if (words.length) {
       setTimeout(type, 1500);
     }
@@ -31,18 +20,6 @@ async function details() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   } catch (error) {
     console.log(`Error: ${error.toString()} in detailsC`);
-  }
-}
-
-// CHANGE IMAGES AS PER THEME
-function changeImages(color) {
-  try {
-    document.querySelector(
-      ".programmer-svg"
-    ).src = `.././UTILS/programmer-${color}.svg`;
-    document.querySelector(".about-svg").src = `.././UTILS/about-${color}.svg`;
-  } catch (error) {
-    console.log(`Error: ${error.toString()} in changeImagesC`);
   }
 }
 
@@ -79,52 +56,6 @@ function erase() {
   }
 }
 
-// HIDE NOTIFICATION
-function hideNotification() {
-  try {
-    clearInterval(progressBarInterval);
-    clearTimeout(notificationTimeout);
-    document.querySelector(".popup-msg").style.display = "none";
-  } catch (error) {
-    console.log(`Error: ${error.toString()} in hideNotification`);
-  }
-}
-
-// SHOW NOTIFICATION
-function showNotification(message, duration = 2500) {
-  try {
-    clearInterval(progressBarInterval);
-    clearTimeout(notificationTimeout);
-    const notificationContainer = document.querySelector(
-      ".popup-msg-notification"
-    );
-    const notification = notificationContainer.querySelector(".popup-msg");
-    const notificationMessage =
-      notification.querySelector(".popup-msg-message");
-    const notificationProgress = notification.querySelector(
-      ".popup-msg-progress"
-    );
-
-    notificationMessage.innerText = message;
-    notification.style.display = "block";
-
-    notificationProgress.style.width = "100%";
-
-    const interval = duration / 100;
-
-    progressBarInterval = setInterval(() => {
-      notificationProgress.style.width =
-        parseFloat(notificationProgress.style.width) - 1 + "%";
-    }, interval);
-
-    notificationTimeout = setTimeout(() => {
-      hideNotification();
-    }, duration);
-  } catch (error) {
-    console.log(`Error: ${error.toString()} in showNotification`);
-  }
-}
-
 // *****************************************************************************************************EVENT LISTNERS
 
 document.querySelectorAll(".active-nav-link").forEach((el) => {
@@ -143,9 +74,6 @@ document.querySelectorAll(".active-nav-link").forEach((el) => {
       .classList.remove("hide");
   });
 });
-
-// ONLOAD THEME ADJUST
-document.addEventListener("DOMContentLoaded", () => {});
 
 // CHANGE THEME
 document.querySelector(".theme-icon").addEventListener("click", () => {
