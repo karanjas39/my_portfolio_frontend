@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jaskaran's Portfolio - Admin Panel</title>
+    <link
+      rel="shortcut icon"
+      href=".././UTILS/portfolio.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Source+Code+Pro&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href=".././CSS/admin.css" />
+  </head>
+  <body onload="details()">
+    <!-- *******************************************************************************ADDITIONALS -->
+    <!-- BLUR -->
+    <div class="blur hide"></div>
+
+    <!-- NOTIFICATION POPUP -->
+    <div class="popup-msg-notification">
+      <div class="popup-msg" id="notification">
+        <div class="popup-msg-content">
+          <span class="popup-msg-message">This is a notification message.</span>
+          <span class="popup-msg-close"><i class="fa-solid fa-xmark"></i></span>
+        </div>
+        <div class="popup-msg-progress"></div>
+      </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src=".././JS/admin.js"></script>
+  </body>
+</html>

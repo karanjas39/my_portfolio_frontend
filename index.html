@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Journey</title>
+    <title>Jaskaran's Portfolio</title>
     <link
       rel="shortcut icon"
       href="./UTILS/portfolio.png"
@@ -20,61 +20,53 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Press+Start+2P&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Source+Code+Pro&display=swap"
       rel="stylesheet"
     />
 
     <link rel="stylesheet" href="./CSS/index.css" />
   </head>
-  <body onload="details(),init()">
+  <body onload="init(),details()">
     <header class="header">
       <nav class="nav-links">
         <a
           href="#home-section"
           class="active-nav-link"
-          data-title="Code Base"
           data-value="home-section"
           ><i class="fa-solid fa-house"></i
         ></a>
         <a
           href="#about-section"
-          data-title="Development Journey"
           class="active-nav-link"
           data-value="about-section"
           ><i class="fa-solid fa-user"></i
         ></a>
         <a
           href="#project-section"
-          data-title="Code Showcase"
           class="active-nav-link"
           data-value="project-section"
           ><i class="fa-solid fa-code"></i
         ></a>
         <a
           href="#contact-section"
-          data-title="Connect API"
           class="active-nav-link"
           data-value="contact-section"
           ><i class="fa-solid fa-phone"></i
         ></a>
-        <a href="./HTML/login.html" data-title="Login"
-          ><i class="fa-solid fa-fingerprint"></i
-        ></a>
-        <a href="#change-theme" data-title="Change Theme"
-          ><i class="fa theme-icon fa-sun"></i
-        ></a>
+        <a href="./HTML/login.html"><i class="fa-solid fa-fingerprint"></i></a>
+        <a href="#"><i class="fa theme-icon fa-sun"></i></a>
       </nav>
     </header>
     <div id="home-section"></div>
     <article class="main-container">
+      <!-- <video src="./UTILS/home.mp4" class="home-video" autoplay loop></video> -->
       <!-- *******************************************************************************HOME -->
       <section class="home-section">
         <h1 class="section-heading">Code <span>Base</span>.</h1>
-
         <div class="home-inner-container">
           <img
             src="./UTILS/programmer-light.svg"
-            alt="SVG of a programmer writing code"
+            alt="SVG of the programmer"
             class="programmer-svg"
           />
           <div class="home-text">
@@ -153,6 +145,7 @@
 
         <div class="project-inner-container">
           <div class="project-list">
+            <!-- PROJECT TEMPLATE START HERE -->
             <div class="project-template">
               <div class="project-name">Opentalks<span>.</span></div>
               <div class="project-description">
@@ -162,6 +155,7 @@
               </div>
               <button class="view-project">View Details</button>
             </div>
+            <!-- PROJECT TEMPLATE END HERE -->
           </div>
         </div>
       </section>

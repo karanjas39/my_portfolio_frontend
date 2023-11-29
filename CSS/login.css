@@ -38,7 +38,7 @@ html {
 body {
   background-color: var(--background-color);
   color: var(--color1);
-  font-family: "Poppins", "Courier New", Courier, monospace;
+  font-family: "Source Code Pro", "Courier New", Courier, monospace;
   position: relative;
 }
 
@@ -132,13 +132,14 @@ body {
   grid-template-columns: auto 1fr;
   gap: 5px;
 }
+
 .terminal-inner input {
   background-color: transparent;
   border: none;
   outline: none;
   font-size: 14px;
   color: var(--color1);
-  width: 100%;
+  font-family: "Source Code Pro", "Courier New", Courier, monospace;
 }
 
 .terminal-inner {
@@ -208,7 +209,7 @@ body {
 #loading-animation {
   width: 15px;
   height: 15px;
-  background-color: var(--green);
+  background-color: var(--color2);
   border-radius: 50%;
   margin-top: 10px;
   display: none;
@@ -221,6 +222,15 @@ body {
 /*! ADDITIONAL */
 .hide {
   display: none;
+}
+
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  z-index: 999999;
 }
 
 .blur {
@@ -246,25 +256,4 @@ button:hover {
 
 button:active {
   transform: scale(0.95) !important;
-}
-
-[data-title]::after {
-  z-index: 999;
-  content: attr(data-title);
-  display: none;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: var(--background-color);
-  color: var(--color1);
-  padding: 8px;
-  border-radius: 4px;
-  font-size: 14px;
-  white-space: nowrap;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  border-radius: 20px;
-}
-
-[data-title]:hover::after {
-  display: block;
 }
