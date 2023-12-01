@@ -196,6 +196,10 @@ async function developerAbout() {
 
 // *****************************************************************************************************EVENT LISTNERS
 
+document.querySelector(".ad-cnt").addEventListener("click", async () => {
+  window.location.href = "./HTML/login.html";
+});
+
 document.querySelectorAll(".active-nav-link").forEach((el) => {
   el.addEventListener("click", async (el) => {
     let target = el.target;
