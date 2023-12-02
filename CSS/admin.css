@@ -42,6 +42,97 @@ body {
   position: relative;
 }
 
+/*! HEADER 1 */
+.nav-links {
+  position: fixed;
+  background-color: var(--background-color);
+  border-radius: 30px;
+  padding: 10px;
+  /* left: 50%; */
+  top: 50%;
+  right: 20px;
+  /* bottom: 20px; */
+  transform: translate(0, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 99999999;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--color1);
+  position: relative;
+}
+
+.nav-links i {
+  font-size: 24px;
+}
+
+/*! SECTIONS  */
+.main-container {
+  width: 90%;
+  margin: 20px auto;
+}
+
+/*! HOME SECTION  */
+.home-top-admin-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.admin-salute {
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+
+.admin-top-admin-info-options {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.admin-top-admin-info-options > i {
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.admin-wish {
+  color: var(--color2);
+  font-weight: bold;
+}
+
+.home-top-details {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 5px;
+}
+
+.home-top-details-field {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.home-top-details-field p {
+  color: var(--color2);
+  font-size: 14px;
+}
+.home-top-details-field span {
+  color: var(--color1);
+}
+
+.home-middle {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
 /*! NOTIFICATION POPUP */
 .popup-msg-notification {
   position: fixed;

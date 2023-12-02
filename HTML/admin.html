@@ -27,6 +27,68 @@
     <link rel="stylesheet" href=".././CSS/admin.css" />
   </head>
   <body onload="details()">
+    <header class="header">
+      <nav class="nav-links">
+        <a href="#" class="active-nav-link" data-value="home-section"
+          ><i class="fa-solid fa-house"></i
+        ></a>
+        <a href="#" class="active-nav-link" data-value="about-section"
+          ><i class="fa-solid fa-user"></i
+        ></a>
+        <a href="#" class="active-nav-link" data-value="project-section"
+          ><i class="fa-solid fa-code"></i
+        ></a>
+        <a href="#" class="active-nav-link" data-value="contact-section"
+          ><i class="fa-solid fa-phone"></i
+        ></a>
+        <a href="#"><i class="fa theme-icon fa-sun"></i></a>
+      </nav>
+    </header>
+    <article class="main-container">
+      <section class="home-section">
+        <div class="home-top">
+          <div class="home-top-admin-info">
+            <p class="admin-salute">
+              <span class="admin-wish"></span>
+              <span class="admin-name">Jaskaran Singh</span>
+            </p>
+            <div class="admin-top-admin-info-options">
+              <i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-lock"></i>
+              <i class="fa-solid fa-right-from-bracket"></i>
+            </div>
+          </div>
+          <div class="home-top-details">
+            <div class="home-top-details-field">
+              <p>
+                <i class="fa-solid fa-lightbulb"></i> Role: <span>Admin</span>
+              </p>
+            </div>
+            <div class="home-top-details-field">
+              <p>
+                <i class="fa-regular fa-calendar-days"></i> Date Joined:
+                <span>1 April 2023</span>
+              </p>
+            </div>
+            <div class="home-top-details-field">
+              <p>
+                <i class="fa-solid fa-at"></i> Email:
+                <span>user@gmail.com</span>
+              </p>
+            </div>
+          </div>
+          <hr />
+        </div>
+        <div class="home-middle">
+          <div class="home-mid-inner-container">Con 1</div>
+          <div class="home-mid-inner-container">Con 2</div>
+        </div>
+      </section>
+      <section class="about-section hide">About</section>
+      <section class="project-section hide">Project</section>
+      <section class="contact-section hide">Contact</section>
+    </article>
+
     <!-- *******************************************************************************ADDITIONALS -->
     <!-- BLUR -->
     <div class="blur hide"></div>
@@ -43,6 +105,7 @@
     </div>
 
     <!-- SCRIPTS -->
+    <script src=".././JS//body-bg.js"></script>
     <script src=".././JS/admin.js"></script>
   </body>
 </html>

@@ -214,7 +214,7 @@ section {
 }
 
 .tab-contents li {
-  list-style: none;
+  list-style: square;
   margin-bottom: 5px;
 }
 
@@ -233,9 +233,6 @@ section {
 
 .active-tab {
   display: block;
-}
-.skills ul li {
-  list-style: square;
 }
 
 /*! PROJECT SECTION  */
