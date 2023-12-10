@@ -3,6 +3,8 @@ let words = [];
 
 let index = 0;
 let charIndex = 0;
+let prevBtn;
+let prevSectionContainer;
 
 // *****************************************************************************************************FUNCTIONS
 
@@ -15,7 +17,9 @@ async function details() {
     }
     document.querySelector(".current-year").textContent =
       new Date().getFullYear();
-    document.querySelector(".fa-house").style.color = "var(--color2)";
+    prevBtn = document.querySelector(".home-i");
+    prevSectionContainer = document.querySelector(".home-section");
+    document.querySelector(".home-i").style.color = "var(--color2)";
     changeTheme(localStorage.getItem("theme"));
   } catch (error) {
     console.log(`Error: ${error.toString()} in detailsC`);
@@ -191,24 +195,23 @@ document.querySelector(".ad-cnt").addEventListener("click", async () => {
   window.location.href = "./HTML/login.html";
 });
 
-document.querySelectorAll(".active-nav-link").forEach((el) => {
-  el.addEventListener("click", async (el) => {
-    let target = el.target;
-    let container = target.closest(".active-nav-link");
-    if (container.dataset.value == "about-section") {
+document.querySelector(".nav-links").addEventListener("click", async (e) => {
+  let target = e.target;
+  if (target.classList.contains("main-i")) {
+    let section = target.dataset.classname;
+
+    prevSectionContainer.classList.add("hide");
+    document.querySelector(`.${section}`).classList.remove("hide");
+    prevSectionContainer = document.querySelector(`.${section}`);
+
+    prevBtn.style.color = "var(--color1)";
+    prevBtn = target;
+    target.style.color = "var(--color2)";
+
+    if (target.classList.contains("about-i")) {
       await developerAbout();
     }
-    document.querySelectorAll(".main-container>section").forEach((el) => {
-      el.classList.add("hide");
-    });
-    document.querySelectorAll(".nav-links i").forEach((el) => {
-      el.style.color = "var(--color1)";
-    });
-    target.closest("i").style.color = "var(--color2)";
-    document
-      .querySelector(`.${container.dataset.value}`)
-      .classList.remove("hide");
-  });
+  }
 });
 
 // CHANGE THEME

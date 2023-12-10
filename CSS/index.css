@@ -206,15 +206,15 @@ section {
   bottom: -2px;
   left: 0;
   position: absolute;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 
 .active-link::after {
-  width: 70%;
+  width: 50%;
 }
 
 .tab-contents li {
-  list-style: square;
+  list-style: disc;
   margin-bottom: 5px;
 }
 
@@ -530,6 +530,10 @@ button {
 button:hover {
   transform: unset;
   transform: scale(1.02) !important;
+}
+
+i {
+  cursor: pointer;
 }
 
 button:active {

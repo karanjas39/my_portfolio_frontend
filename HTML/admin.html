@@ -29,23 +29,29 @@
   <body onload="details()">
     <header class="header">
       <nav class="nav-links">
-        <a href="#" class="active-nav-link" data-value="home-section"
-          ><i class="fa-solid fa-house"></i
-        ></a>
-        <a href="#" class="active-nav-link" data-value="about-section"
-          ><i class="fa-solid fa-user"></i
-        ></a>
-        <a href="#" class="active-nav-link" data-value="project-section"
-          ><i class="fa-solid fa-code"></i
-        ></a>
-        <a href="#" class="active-nav-link" data-value="contact-section"
-          ><i class="fa-solid fa-phone"></i
-        ></a>
-        <a href="#"><i class="fa theme-icon fa-sun"></i></a>
+        <i
+          class="fa-solid fa-house home-i main-i"
+          data-classname="home-section"
+        ></i>
+        <i
+          class="fa-solid fa-user about-i main-i"
+          data-classname="about-section"
+        ></i>
+        <i
+          class="fa-solid fa-code project-i main-i"
+          data-classname="project-section"
+        ></i>
+        <i
+          class="fa-solid fa-phone contact-i main-i"
+          data-classname="contact-section"
+        ></i>
+        <i class="fa-solid fa-arrow-right-from-bracket admin-logout"></i>
+        <i class="fa theme-icon fa-sun"></i>
       </nav>
     </header>
     <article class="main-container">
       <section class="home-section">
+        <h1 class="section-heading">Admin <span>Base</span>.</h1>
         <div class="home-top">
           <div class="home-top-admin-info">
             <p class="admin-salute">
@@ -53,9 +59,8 @@
               <span class="admin-name">Jaskaran Singh</span>
             </p>
             <div class="admin-top-admin-info-options">
-              <i class="fa-solid fa-pencil"></i>
-              <i class="fa-solid fa-lock"></i>
-              <i class="fa-solid fa-right-from-bracket"></i>
+              <i class="fa-solid fa-pencil edit-admin-icon"></i>
+              <i class="fa-solid fa-lock change-admin-password"></i>
             </div>
           </div>
           <div class="home-top-details">
@@ -67,26 +72,48 @@
             <div class="home-top-details-field">
               <p>
                 <i class="fa-regular fa-calendar-days"></i> Date Joined:
-                <span>1 April 2023</span>
+                <span class="admin-join-date">1 April 2023</span>
               </p>
             </div>
             <div class="home-top-details-field">
               <p>
                 <i class="fa-solid fa-at"></i> Email:
-                <span>user@gmail.com</span>
+                <span class="admin-email">user@gmail.com</span>
               </p>
             </div>
           </div>
           <hr />
         </div>
         <div class="home-middle">
-          <div class="home-mid-inner-container">Con 1</div>
-          <div class="home-mid-inner-container">Con 2</div>
+          <div class="home-mid-inner-container">
+            <div class="home-mid-inner-con-top">
+              <h2>Developer Roles</h2>
+              <i class="fa-solid fa-plus add-dev-role"></i>
+            </div>
+            <div class="home-mid-container"></div>
+          </div>
+          <div class="home-mid-inner-container">
+            <div class="home-mid-inner-con-top">
+              <h2>Social Media Handles</h2>
+              <i class="fa-solid fa-plus add-social-handle"></i>
+            </div>
+            <div class="home-mid-container2"></div>
+          </div>
+        </div>
+        <div class="home-bottom-btns">
+          <a class="get-resume-btn" href="#" target="_blank">Get Resume</a>
+          <button class="update-resume-link">Update Resume</button>
         </div>
       </section>
-      <section class="about-section hide">About</section>
-      <section class="project-section hide">Project</section>
-      <section class="contact-section hide">Contact</section>
+      <section class="about-section hide">
+        <h1 class="section-heading">Development <span>Journey</span>.</h1>
+      </section>
+      <section class="project-section hide">
+        <h1 class="section-heading">Code <span>Showcase</span>.</h1>
+      </section>
+      <section class="contact-section hide">
+        <h1 class="section-heading">Connect <span>API</span>.</h1>
+      </section>
     </article>
 
     <!-- *******************************************************************************ADDITIONALS -->
@@ -101,6 +128,194 @@
           <span class="popup-msg-close"><i class="fa-solid fa-xmark"></i></span>
         </div>
         <div class="popup-msg-progress"></div>
+      </div>
+    </div>
+
+    <!-- ADD SOCIAL MEDIA LINKS -->
+    <div class="add-social-media-container popup-container hide">
+      <div class="container-top">
+        <h2>Add Social Media Link</h2>
+        <i class="fa-solid fa-xmark close-add-social-media"></i>
+      </div>
+      <div class="inner-container">
+        <div class="container-inner-field">
+          <label for="add-social-media-name">Social Media Name </label>
+          <input
+            type="text"
+            class="add-social-media-name"
+            id="add-social-media-name"
+          />
+        </div>
+        <div class="container-inner-field">
+          <div class="container-inner-field-sub">
+            <label for="add-social-media-link">Social Media Link </label>
+            <i class="fa-solid fa-eye added-link"></i>
+          </div>
+          <input
+            type="text"
+            class="add-social-media-link"
+            id="add-social-media-link"
+          />
+        </div>
+        <div class="container-inner-field">
+          <label for="add-social-media-icon">Social Media Icon </label>
+          <input
+            type="text"
+            class="add-social-media-icon"
+            id="add-social-media-icon"
+          />
+        </div>
+        <button class="add-social-handle-btn">
+          Submit social media handle
+        </button>
+      </div>
+    </div>
+
+    <!-- EDIT SOCIAL MEDIA LINKS -->
+    <div class="edit-social-media popup-container hide">
+      <div class="container-top">
+        <h2>Edit Social Media Link</h2>
+        <i class="fa-solid fa-xmark close-edit-social-media"></i>
+      </div>
+      <div class="inner-container">
+        <div class="container-inner-field">
+          <label for="social-media-name">Social Media Name</label>
+          <input
+            type="text"
+            class="edit-social-media-name"
+            id="social-media-name"
+          />
+        </div>
+        <div class="container-inner-field">
+          <div class="container-inner-field-sub">
+            <label for="add-social-media-link">Social Media Link </label>
+            <i class="fa-solid fa-eye edited-link"></i>
+          </div>
+          <input
+            type="text"
+            class="edit-social-media-link"
+            id="social-media-link"
+          />
+        </div>
+        <div class="container-inner-field">
+          <label for="social-media-icon">Social Media Icon</label>
+          <input
+            type="text"
+            class="edit-social-media-icon"
+            id="social-media-icon"
+          />
+        </div>
+        <button class="edit-social-handle-btn">
+          Submit social media handle
+        </button>
+      </div>
+    </div>
+
+    <!-- ADD ROLE -->
+    <div class="add-role popup-container hide">
+      <div class="container-top">
+        <h2>Add Role</h2>
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+      <div class="inner-container">
+        <div class="container-inner-field">
+          <label for="role-name">Role Name</label>
+          <input type="text" class="role-name" id="role-name" />
+        </div>
+        <button class="add-role-btn">Submit new role</button>
+      </div>
+    </div>
+
+    <!-- EDIT ROLE  -->
+    <div class="edit-role popup-container hide">
+      <div class="container-top">
+        <h2>Edit Role</h2>
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+      <div class="inner-container">
+        <div class="container-inner-field">
+          <label for="edit-role-name">Role Name</label>
+          <input type="text" class="edit-role-name" id="edit-role-name" />
+        </div>
+        <button class="edit-role-btn">Submit updated role</button>
+      </div>
+    </div>
+
+    <!-- EDIT ADMIN  -->
+    <div class="edit-admin popup-container hide">
+      <div class="container-top">
+        <h2>Edit Admin Details</h2>
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+      <div class="inner-container">
+        <div class="container-inner-field">
+          <label for="edit-admin-name">Name</label>
+          <input type="text" class="edit-admin-name" id="edit-admin-name" />
+        </div>
+        <div class="container-inner-field">
+          <label for="edit-admin-email">Email</label>
+          <input type="email" class="edit-admin-email" id="edit-admin-email" />
+        </div>
+        <div class="container-inner-field">
+          <div class="container-inner-field-sub">
+            <label for="edit-admin-cv-link">CV Link</label>
+            <i class="fa-solid fa-eye admin-cv-link"></i>
+          </div>
+          <input
+            type="text"
+            class="edit-admin-cv-link"
+            id="edit-admin-cv-link"
+          />
+        </div>
+        <div class="container-inner-field">
+          <label for="edit-admin-cloud-path">Cloud Path</label>
+          <input
+            type="text"
+            class="edit-admin-cloud-path"
+            id="edit-admin-cloud-path"
+          />
+        </div>
+        <button class="edit-admin-btn">Submit Admin Details</button>
+      </div>
+    </div>
+
+    <!-- UPDATE RESUME -->
+    <div class="update-resume-container popup-container hide">
+      <div class="container-top">
+        <h2>Update resume</h2>
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+      <div class="inner-container">
+        <div class="container-inner-field">
+          <input
+            type="file"
+            accept="application/pdf"
+            class="update-resume-inp"
+            id="update-resume-inp"
+          />
+          <label for="update-resume-inp" class="update-resume-label">
+            Click to upload new resume
+          </label>
+        </div>
+        <p id="selectedFileName" class="selectedFileName hide">
+          Selected File is <span id="fileName"></span>.
+        </p>
+        <button class="update-cv-btn">Update Resume</button>
+      </div>
+    </div>
+
+    <!-- SESSION TIMEOUT -->
+    <p class="sessionTimeOutContainer hide"></p>
+
+    <!-- SESSION TIME -->
+    <p class="sessiontime">Session Expires in <span>12 seconds</span></p>
+
+    <!-- CONFIRM-BOX -->
+    <div class="confirm-box hide">
+      <p></p>
+      <div>
+        <button value="true">Yes</button>
+        <button value="false">No</button>
       </div>
     </div>
 
