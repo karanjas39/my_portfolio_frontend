@@ -45,11 +45,13 @@
           class="fa-solid fa-phone contact-i main-i"
           data-classname="contact-section"
         ></i>
-        <i class="fa-solid fa-arrow-right-from-bracket admin-logout"></i>
+        <i class="fa-solid fa-right-to-bracket admin-logout"></i>
         <i class="fa theme-icon fa-sun"></i>
       </nav>
     </header>
     <article class="main-container">
+      <p class="sessiontime">Session Expires in <span>12 seconds</span></p>
+
       <section class="home-section">
         <h1 class="section-heading">Admin <span>Base</span>.</h1>
         <div class="home-top">
@@ -107,9 +109,46 @@
       </section>
       <section class="about-section hide">
         <h1 class="section-heading">Development <span>Journey</span>.</h1>
+        <div class="about-sec-container">
+          <div class="dev-skill-container about-con">
+            <div class="about-con-top">
+              <h2>Developer Skills</h2>
+              <i class="fa-solid fa-plus add-dev-skill"></i>
+            </div>
+            <div class="skill-con-inner"></div>
+          </div>
+          <div class="dev-exp-container about-con">
+            <div class="about-con-top">
+              <h2>Developer Experience</h2>
+              <i class="fa-solid fa-plus add-dev-exp"></i>
+            </div>
+            <div class="exp-con-inner"></div>
+          </div>
+          <div class="dev-edu-container about-con">
+            <div class="about-con-top">
+              <h2>Developer Education</h2>
+              <i class="fa-solid fa-plus add-dev-edu"></i>
+            </div>
+            <div class="edu-con-inner"></div>
+          </div>
+        </div>
       </section>
       <section class="project-section hide">
         <h1 class="section-heading">Code <span>Showcase</span>.</h1>
+        <div class="project-section-top">
+          <input
+            type="search"
+            class="search-project-inp"
+            placeholder="Search your next coding adventure..."
+          />
+          <div class="project-section-top-btns">
+            <i class="fa-solid fa-plus add-new-project"></i>
+            <i class="fa-solid fa-filter search-project"></i>
+          </div>
+        </div>
+        <div class="project-inner-container">
+          <div class="project-list"></div>
+        </div>
       </section>
       <section class="contact-section hide">
         <h1 class="section-heading">Connect <span>API</span>.</h1>
@@ -144,6 +183,7 @@
             type="text"
             class="add-social-media-name"
             id="add-social-media-name"
+            placeholder="Social media name..."
           />
         </div>
         <div class="container-inner-field">
@@ -155,6 +195,7 @@
             type="text"
             class="add-social-media-link"
             id="add-social-media-link"
+            placeholder="Social media link..."
           />
         </div>
         <div class="container-inner-field">
@@ -163,11 +204,10 @@
             type="text"
             class="add-social-media-icon"
             id="add-social-media-icon"
+            placeholder="Social media icon..."
           />
         </div>
-        <button class="add-social-handle-btn">
-          Submit social media handle
-        </button>
+        <button class="add-social-handle-btn">Submit</button>
       </div>
     </div>
 
@@ -184,6 +224,7 @@
             type="text"
             class="edit-social-media-name"
             id="social-media-name"
+            placeholder="Social media name..."
           />
         </div>
         <div class="container-inner-field">
@@ -195,6 +236,7 @@
             type="text"
             class="edit-social-media-link"
             id="social-media-link"
+            placeholder="Social media link..."
           />
         </div>
         <div class="container-inner-field">
@@ -203,11 +245,10 @@
             type="text"
             class="edit-social-media-icon"
             id="social-media-icon"
+            placeholder="Social media icon..."
           />
         </div>
-        <button class="edit-social-handle-btn">
-          Submit social media handle
-        </button>
+        <button class="edit-social-handle-btn">Submit</button>
       </div>
     </div>
 
@@ -220,9 +261,14 @@
       <div class="inner-container">
         <div class="container-inner-field">
           <label for="role-name">Role Name</label>
-          <input type="text" class="role-name" id="role-name" />
+          <input
+            type="text"
+            class="role-name"
+            id="role-name"
+            placeholder="Role..."
+          />
         </div>
-        <button class="add-role-btn">Submit new role</button>
+        <button class="add-role-btn">Submit</button>
       </div>
     </div>
 
@@ -235,9 +281,14 @@
       <div class="inner-container">
         <div class="container-inner-field">
           <label for="edit-role-name">Role Name</label>
-          <input type="text" class="edit-role-name" id="edit-role-name" />
+          <input
+            type="text"
+            class="edit-role-name"
+            id="edit-role-name"
+            placeholder="Role..."
+          />
         </div>
-        <button class="edit-role-btn">Submit updated role</button>
+        <button class="edit-role-btn">Submit</button>
       </div>
     </div>
 
@@ -250,11 +301,21 @@
       <div class="inner-container">
         <div class="container-inner-field">
           <label for="edit-admin-name">Name</label>
-          <input type="text" class="edit-admin-name" id="edit-admin-name" />
+          <input
+            type="text"
+            class="edit-admin-name"
+            id="edit-admin-name"
+            placeholder="Name..."
+          />
         </div>
         <div class="container-inner-field">
           <label for="edit-admin-email">Email</label>
-          <input type="email" class="edit-admin-email" id="edit-admin-email" />
+          <input
+            type="email"
+            class="edit-admin-email"
+            id="edit-admin-email"
+            placeholder="Email..."
+          />
         </div>
         <div class="container-inner-field">
           <div class="container-inner-field-sub">
@@ -265,6 +326,7 @@
             type="text"
             class="edit-admin-cv-link"
             id="edit-admin-cv-link"
+            placeholder="CV Link..."
           />
         </div>
         <div class="container-inner-field">
@@ -273,9 +335,10 @@
             type="text"
             class="edit-admin-cloud-path"
             id="edit-admin-cloud-path"
+            placeholder="Cloud Path..."
           />
         </div>
-        <button class="edit-admin-btn">Submit Admin Details</button>
+        <button class="edit-admin-btn">Submit</button>
       </div>
     </div>
 
@@ -300,15 +363,416 @@
         <p id="selectedFileName" class="selectedFileName hide">
           Selected File is <span id="fileName"></span>.
         </p>
-        <button class="update-cv-btn">Update Resume</button>
+        <button class="update-cv-btn">Submit</button>
+      </div>
+    </div>
+
+    <!-- ADD SKILL  -->
+    <div class="add-skill popup-container hide">
+      <div class="container-top">
+        <h2>Add Skill</h2>
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+      <div class="inner-container">
+        <div class="container-inner-field">
+          <label for="about-new-skill-name">Skill Name</label>
+          <input
+            type="text"
+            class="about-new-skill-name"
+            id="about-new-skill-name"
+            placeholder="Skill..."
+          />
+        </div>
+        <button class="add-skill-btn">Submit</button>
+      </div>
+    </div>
+
+    <!-- ADD EXPERIENCE -->
+    <div class="add-experience popup-container hide">
+      <div class="container-top">
+        <h2>Add Experience</h2>
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+      <div class="inner-container">
+        <div class="container-inner-field">
+          <label for="about-new-exp-role">Role</label>
+          <input
+            type="text"
+            class="about-new-exp-role"
+            id="about-new-exp-role"
+            placeholder="Experience..."
+          />
+        </div>
+        <div class="container-inner-field">
+          <label for="about-new-exp-from">From</label>
+          <input
+            type="number"
+            class="about-new-exp-from"
+            id="about-new-exp-from"
+            placeholder="From..."
+          />
+        </div>
+        <div class="container-inner-field">
+          <label for="about-new-exp-to">To</label>
+          <input
+            type="number"
+            class="about-new-exp-to"
+            id="about-new-exp-to"
+            placeholder="To..."
+          />
+        </div>
+        <div class="container-inner-field toggle-inner-field">
+          <label>Is Current</label>
+          <label class="toggle">
+            <input
+              type="checkbox"
+              class="checkbox-status-toggle about-new-exp-isCurrent"
+              checked
+            />
+            <span class="checkbox-slider"></span>
+          </label>
+        </div>
+        <button class="add-exp-btn">Submit</button>
+      </div>
+    </div>
+
+    <!-- ADD EDUCATION -->
+    <div class="add-education popup-container hide">
+      <div class="container-top">
+        <h2>Add Education</h2>
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+      <div class="inner-container">
+        <div class="container-inner-field">
+          <label for="about-new-edu-institute">Institute</label>
+          <input
+            type="text"
+            class="about-new-edu-institute"
+            id="about-new-edu-institute"
+            placeholder="Institute..."
+          />
+        </div>
+        <div class="container-inner-field">
+          <label for="about-new-edu-from">From</label>
+          <input
+            type="number"
+            class="about-new-edu-from"
+            id="about-new-edu-from"
+            placeholder="From..."
+          />
+        </div>
+        <div class="container-inner-field">
+          <label for="about-new-edu-to">To</label>
+          <input
+            type="number"
+            class="about-new-edu-to"
+            id="about-new-edu-to"
+            placeholder="To..."
+          />
+        </div>
+        <div class="container-inner-field toggle-inner-field">
+          <label>Is Current</label>
+          <label class="toggle">
+            <input
+              type="checkbox"
+              class="checkbox-status-toggle about-new-edu-isCurrent"
+              checked
+            />
+            <span class="checkbox-slider"></span>
+          </label>
+        </div>
+        <button class="add-edu-btn">Submit</button>
+      </div>
+    </div>
+
+    <!-- EDIT SKILL -->
+    <div class="edit-skill-container popup-container hide">
+      <div class="container-top">
+        <h2>Edit Skill</h2>
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+      <div class="inner-container">
+        <div class="container-inner-field">
+          <label for="edit-skill-name">Skill Name</label>
+          <input
+            type="text"
+            class="edit-skill-name"
+            id="edit-skill-name"
+            placeholder="Skill..."
+          />
+        </div>
+        <button class="edit-skill-btn">Submit</button>
+      </div>
+    </div>
+
+    <!-- EDIT EXPERIENCE  -->
+    <div class="edit-experience-container popup-container hide">
+      <div class="container-top">
+        <h2>Edit Experience</h2>
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+      <div class="inner-container">
+        <div class="container-inner-field">
+          <label for="edit-exp-role">Role</label>
+          <input
+            type="text"
+            class="edit-exp-role"
+            id="edit-exp-role"
+            placeholder="Role..."
+          />
+        </div>
+        <div class="container-inner-field">
+          <label for="edit-exp-from">From</label>
+          <input
+            type="number"
+            class="edit-exp-from"
+            id="edit-exp-from"
+            placeholder="From..."
+          />
+        </div>
+        <div class="container-inner-field">
+          <label for="edit-exp-to">To</label>
+          <input
+            type="number"
+            class="edit-exp-to"
+            id="edit-exp-to"
+            placeholder="To..."
+          />
+        </div>
+        <div class="container-inner-field toggle-inner-field">
+          <label>Is Current</label>
+          <label class="toggle">
+            <input
+              type="checkbox"
+              class="checkbox-status-toggle edit-exp-isCurrent"
+              checked
+            />
+            <span class="checkbox-slider"></span>
+          </label>
+        </div>
+        <button class="edit-exp-btn">Submit</button>
+      </div>
+    </div>
+
+    <!-- EDIT EDUCATION -->
+    <div class="edit-education-container popup-container hide">
+      <div class="container-top">
+        <h2>Edit Education</h2>
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+      <div class="inner-container">
+        <div class="container-inner-field">
+          <label for="edit-edu-institute">Institute</label>
+          <input
+            type="text"
+            class="edit-edu-institute"
+            id="edit-edu-institute"
+            placeholder="Institute..."
+          />
+        </div>
+        <div class="container-inner-field">
+          <label for="edit-edu-from">From</label>
+          <input
+            type="number"
+            class="edit-edu-from"
+            id="edit-edu-from"
+            placeholder="From..."
+          />
+        </div>
+        <div class="container-inner-field">
+          <label for="edit-edu-to">To</label>
+          <input
+            type="number"
+            class="edit-edu-to"
+            id="edit-edu-to"
+            placeholder="To..."
+          />
+        </div>
+        <div class="container-inner-field toggle-inner-field">
+          <label>Is Current</label>
+          <label class="toggle">
+            <input
+              type="checkbox"
+              class="checkbox-status-toggle edit-edu-isCurrent"
+              checked
+            />
+            <span class="checkbox-slider"></span>
+          </label>
+        </div>
+        <button class="edit-edu-btn">Submit</button>
+      </div>
+    </div>
+
+    <!-- ADD PROJECT -->
+    <div class="add-project-container popup-container hide">
+      <div class="container-top">
+        <h2>Add Project</h2>
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+      <div class="inner-container">
+        <div class="container-inner-field">
+          <label for="add-project-title">Title</label>
+          <input
+            type="text"
+            class="add-project-title"
+            id="add-project-title"
+            placeholder="Project title..."
+          />
+        </div>
+        <div class="container-inner-field">
+          <label for="add-project-brief-des">Brief Description</label>
+          <textarea
+            class="add-project-brief-des"
+            id="add-project-brief-des"
+            cols="30"
+            rows="3"
+            placeholder="Maximum 50 words..."
+          ></textarea>
+        </div>
+        <div class="container-inner-field">
+          <label for="add-project-detailed-des">Detailed Description</label>
+          <textarea
+            class="add-project-detailed-des"
+            id="add-project-detailed-des"
+            cols="30"
+            rows="6"
+            placeholder="Maximum 200 words..."
+          ></textarea>
+        </div>
+        <button class="add-project-btn">Submit</button>
+      </div>
+    </div>
+
+    <div class="add-project-more-des-container popup-container hide">
+      <div class="container-top">
+        <h2>Add More Details</h2>
+        <i class="fa-solid fa-xmark close-add-project-more-des-container"></i>
+      </div>
+      <div class="inner-container">
+        <div class="container-inner-field">
+          <label for="add-project-startedOn">Started On</label>
+          <input
+            type="date"
+            class="add-project-startedOn"
+            id="add-project-startedOn"
+          />
+        </div>
+        <div class="container-inner-field">
+          <label for="add-project-finishedOn">Finished On</label>
+          <input
+            type="date"
+            class="add-project-finishedOn"
+            id="add-project-finishedOn"
+          />
+        </div>
+        <div class="container-inner-field">
+          <div class="container-inner-field-sub">
+            <label for="add-project-tech-stack">Tech Stack</label>
+            <select
+              id="add-project-tech-stack"
+              class="add-project-tech-stack"
+            ></select>
+          </div>
+          <div class="add-project-tech-stack-list">
+            No tech stack is added yet.
+          </div>
+        </div>
+        <div class="container-inner-field">
+          <div class="container-inner-field-sub">
+            <label for="add-project-link">Project Links</label>
+            <i class="fa-solid fa-plus add-project-link"></i>
+          </div>
+          <div class="add-project-link-list">No project link is added yet.</div>
+        </div>
+        <div class="container-inner-field">
+          <div class="container-inner-field-sub">
+            <label for="add-project-contributor">Project Contributors</label>
+            <i class="fa-solid fa-plus add-project-contributor"></i>
+          </div>
+          <div class="add-project-contributor-list">
+            No project contributor is added yet.
+          </div>
+        </div>
+        <button class="add-project-more-des-btn">Submit</button>
+      </div>
+    </div>
+
+    <!-- ADD PROJCET LINK -->
+    <div class="add-project-link-container popup-container hide">
+      <div class="container-top">
+        <h2>Add Project Link</h2>
+        <i class="fa-solid fa-xmark close-add-project-link-container"></i>
+      </div>
+      <div class="inner-container">
+        <div class="container-inner-field">
+          <label for="add-project-link-title">Link Title</label>
+          <input
+            type="text"
+            class="add-project-link-title"
+            id="add-project-link-title"
+            placeholder="Link title..."
+          />
+        </div>
+        <div class="container-inner">
+          <div class="container-inner-field">
+            <div class="container-inner-field-sub">
+              <label for="add-project-link-url">Link URL</label>
+              <i class="fa-solid fa-eye visit-addedlink-in-new-project"></i>
+            </div>
+            <input
+              type="url"
+              class="add-project-link-url"
+              id="add-project-link-url"
+              placeholder="Link url..."
+            />
+          </div>
+        </div>
+        <button class="add-project-link-btn">Submit</button>
+      </div>
+    </div>
+
+    <!-- ADD CONTRIBUTOR -->
+    <div class="add-contributor-container popup-container hide">
+      <div class="container-top">
+        <h2>Add Contributors</h2>
+        <i class="fa-solid fa-xmark close-add-contributor-con"></i>
+      </div>
+      <div class="inner-container">
+        <div class="container-inner-field">
+          <label for="add-contributor-name">Contributor Name</label>
+          <input
+            type="text"
+            class="add-contributor-name"
+            id="add-contributor-name"
+            placeholder="Contributor name..."
+          />
+        </div>
+        <button class="add-contributor-btn">Submit</button>
+      </div>
+    </div>
+
+    <!-- ADMIN CONFIRM -->
+    <div class="admin-pass-container popup-container hide">
+      <div class="container-top">
+        <h2>Confirm Admin Password</h2>
+        <i class="fa-solid fa-xmark close-admin-container"></i>
+      </div>
+      <div class="inner-container">
+        <div class="container-inner-field">
+          <label for="admin-password-inp">Password</label>
+          <input
+            type="password"
+            class="admin-password-inp"
+            id="admin-password-inp"
+            placeholder="Admin password..."
+          />
+        </div>
+        <button class="admin-pass-btn">Submit</button>
       </div>
     </div>
 
     <!-- SESSION TIMEOUT -->
     <p class="sessionTimeOutContainer hide"></p>
-
-    <!-- SESSION TIME -->
-    <p class="sessiontime">Session Expires in <span>12 seconds</span></p>
 
     <!-- CONFIRM-BOX -->
     <div class="confirm-box hide">
