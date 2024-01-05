@@ -13,7 +13,7 @@ async function details() {
   try {
     await Promise.all([developerDetails(), developerRoles()]);
     if (words.length) {
-      setTimeout(type, 1500);
+      setTimeout(type, 50);
     }
     document.querySelector(".current-year").textContent =
       new Date().getFullYear();
@@ -55,7 +55,7 @@ function erase() {
     if (index >= words.length) {
       index = 0;
     }
-    setTimeout(type, 1000);
+    setTimeout(type, 50);
   }
 }
 
