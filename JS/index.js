@@ -191,10 +191,6 @@ async function developerAbout() {
 
 // *****************************************************************************************************EVENT LISTNERS
 
-document.querySelector(".ad-cnt").addEventListener("click", async () => {
-  window.location.href = "./HTML/login.html";
-});
-
 document.querySelector(".nav-links").addEventListener("click", async (e) => {
   let target = e.target;
   if (target.classList.contains("main-i")) {
