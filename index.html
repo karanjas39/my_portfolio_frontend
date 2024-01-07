@@ -26,7 +26,7 @@
 
     <link rel="stylesheet" href="./CSS/index.css" />
   </head>
-  <body onload="init(),details()">
+  <body onload="details()">
     <header class="header">
       <nav class="nav-links">
         <i
@@ -79,9 +79,15 @@
           />
           <div class="about-text">
             <div class="about-tab-links">
-              <button class="tab-links skills active-link">Skills</button>
-              <button class="tab-links experience">Experience</button>
-              <button class="tab-links education">Education</button>
+              <button class="tab-links skills active-link" value="skills">
+                Skills
+              </button>
+              <button class="tab-links experience" value="experience">
+                Experience
+              </button>
+              <button class="tab-links education" value="education">
+                Education
+              </button>
             </div>
             <div class="tab-contents skills active-tab">
               <ul></ul>
@@ -100,27 +106,14 @@
         <h1 class="section-heading">Code <span>Showcase</span>.</h1>
         <div class="project-section-top">
           <input
-            type="search"
+            type="text"
             class="search-project-inp"
-            placeholder="Search your next coding adventure..."
+            placeholder="Search project by name or description..."
           />
           <i class="fa-solid fa-filter"></i>
         </div>
-
         <div class="project-inner-container">
-          <div class="project-list">
-            <!-- PROJECT TEMPLATE START HERE -->
-            <div class="project-template">
-              <div class="project-name">Opentalks</div>
-              <div class="project-description">
-                Opentalks: A forum for university students to connect, engage,
-                and share knowledge. Request admin approval to join the vibrant
-                community where your ideas matter.
-              </div>
-              <button class="view-project">View Details</button>
-            </div>
-            <!-- PROJECT TEMPLATE END HERE -->
-          </div>
+          <div class="project-list"></div>
         </div>
       </section>
       <!-- *******************************************************************************CONTACT ME -->
@@ -148,21 +141,7 @@
             ></textarea>
             <button class="send-message">Send Message</button>
           </div>
-
-          <div class="social-links">
-            <a href="#" target="_blank" class="linkedin-handle"
-              ><i class="fa-brands fa-linkedin"></i
-            ></a>
-            <a href="#" target="_blank" class="github-handle"
-              ><i class="fa-brands fa-github"></i
-            ></a>
-            <a
-              href="mailto:dhillonjaskaran4486@gmail.com?subject=Hi! Jaskaran"
-              class="email-handle"
-              target="_blank"
-              ><i class="fa-solid fa-at"></i
-            ></a>
-          </div>
+          <div class="social-links"></div>
 
           <footer>
             <p>
@@ -179,12 +158,70 @@
     <!-- PROJECT DETAILS -->
     <div class="project-detail-container hide">
       <div class="project-detail-top">
-        <h2>Project Name</h2>
+        <h1 class="project-detail-title"></h1>
         <i class="fa-solid fa-xmark close-project-details"></i>
       </div>
-      <p class="project-detail-description">
-        Description of the project goes here.
-      </p>
+      <p class="project-detail-start-finish-date"></p>
+      <p class="project-detail-description"></p>
+      <div class="project-detail-links">
+        <h2>Project Links</h2>
+        <div class="project-detail-links-container"></div>
+      </div>
+      <div class="project-detail-tech-stack">
+        <h2>Project Tech Stack</h2>
+        <div class="project-detail-tech-stack-container"></div>
+      </div>
+      <div class="project-detail-contributors">
+        <div class="project-detail-contributors-top">
+          <h2>Project Contributors</h2>
+          <i class="fa-solid fa-plus add-project-contributor"></i>
+        </div>
+        <div class="project-detail-contributors-container"></div>
+      </div>
+    </div>
+
+    <!-- PROJECT CONTRIBUTION -->
+    <div class="project-contribution-container hide">
+      <div class="project-contribution-top">
+        <h2>Contribution Request</h2>
+        <i class="fa-solid fa-xmark close-project-contribution"></i>
+      </div>
+      <div class="project-contribution-inner">
+        <div class="project-contribution-inner-field">
+          <label for="project-contribution-name">Name</label>
+          <input
+            type="text"
+            id="project-contribution-name"
+            class="project-contribution-name"
+            placeholder="Enter your name here..."
+          />
+        </div>
+        <div class="project-contribution-inner-field">
+          <label for="project-contribution-email">Email</label>
+          <input
+            type="email"
+            id="project-contribution-email"
+            class="project-contribution-email"
+            placeholder="Enter your email here..."
+          />
+        </div>
+        <div class="project-contribution-inner-field">
+          <label for="project-contribution-number">Whatsapp Number</label>
+          <div class="project-contribution-inner-field-sub">
+            <select
+              class="project-contribution-number-code"
+              id="project-contribution-number-code"
+            ></select>
+            <input
+              type="text"
+              id="project-contribution-number"
+              class="project-contribution-number"
+              placeholder="Enter your whatsapp number here..."
+            />
+          </div>
+        </div>
+        <button class="project-contribution-submit-btn">Submit</button>
+      </div>
     </div>
 
     <!-- BLUR -->
@@ -206,7 +243,6 @@
 
     <!-- SCRIPTS -->
     <script src="./JS/body-bg.js"></script>
-    <script src="./JS/init.js"></script>
     <script src="./JS/index.js"></script>
   </body>
 </html>
