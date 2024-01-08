@@ -24,7 +24,7 @@
   .home-inner-container,
   .about-inner-container,
   .project-inner-container {
-    margin: 20px auto;
+    margin-bottom: 20px;
   }
 
   .nav-links {

@@ -76,7 +76,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  height: 100vh;
 }
 
 .home-video {
