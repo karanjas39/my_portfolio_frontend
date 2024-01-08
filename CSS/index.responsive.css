@@ -1,7 +1,7 @@
 @media screen and (max-width: 440px) {
   /*! GENERAL  */
   section {
-    padding-bottom: 40px;
+    padding-bottom: 10px;
   }
 
   .section-heading {
@@ -55,7 +55,6 @@
 
   .project-inner-container {
     width: 100%;
-    height: 400px;
   }
 
   /*PROJECT TEMPLATE  */
@@ -172,7 +171,6 @@
 
   .project-inner-container {
     width: 100%;
-    height: 400px;
   }
 
   /*PROJECT TEMPLATE  */
