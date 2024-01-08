@@ -196,7 +196,7 @@ async function fetchCountryCodes() {
 async function developerDetails() {
   try {
     let response = await fetch(
-      "http://127.0.0.1:4000/api/v1/user/developer/details",
+      "https://developer-jaskaran.onrender.com/api/v1/user/developer/details",
       {
         method: "GET",
         headers: {
@@ -218,7 +218,7 @@ async function developerDetails() {
 async function developerRoles() {
   try {
     let response = await fetch(
-      "http://127.0.0.1:4000/api/v1/user/developer/role/all",
+      "https://developer-jaskaran.onrender.com/api/v1/user/developer/role/all",
       {
         method: "GET",
         headers: {
@@ -242,7 +242,7 @@ async function developerRoles() {
 async function developerAboutSkill() {
   try {
     let response = await fetch(
-      "http://127.0.0.1:4000/api/v1/user/developer/skill/all",
+      "https://developer-jaskaran.onrender.com/api/v1/user/developer/skill/all",
       {
         method: "GET",
         headers: {
@@ -275,7 +275,7 @@ async function developerAboutSkill() {
 async function developerAboutExperience() {
   try {
     let response = await fetch(
-      "http://127.0.0.1:4000/api/v1/user/developer/experience/all",
+      "https://developer-jaskaran.onrender.com/api/v1/user/developer/experience/all",
       {
         method: "GET",
         headers: {
@@ -302,7 +302,7 @@ async function developerAboutExperience() {
 async function developerAboutEducation() {
   try {
     let response = await fetch(
-      "http://127.0.0.1:4000/api/v1/user/developer/education/all",
+      "https://developer-jaskaran.onrender.com/api/v1/user/developer/education/all",
       {
         method: "GET",
         headers: {
@@ -330,7 +330,7 @@ async function developerAboutEducation() {
 async function getAllProjects() {
   try {
     let response = await fetch(
-      `http://127.0.0.1:4000/api/v1/user/developer/project/all`,
+      `https://developer-jaskaran.onrender.com/api/v1/user/developer/project/all`,
       {
         method: "GET",
         headers: {
@@ -363,7 +363,7 @@ async function getAllProjects() {
 async function getProject(id) {
   try {
     let response = await fetch(
-      `http://127.0.0.1:4000/api/v1/user/developer/project/one?_id=${id}`,
+      `https://developer-jaskaran.onrender.com/api/v1/user/developer/project/one?_id=${id}`,
       {
         method: "GET",
         headers: {
@@ -419,7 +419,7 @@ async function getProject(id) {
 async function addContributionRequest(query) {
   try {
     let response = await fetch(
-      `http://127.0.0.1:4000/api/v1/user/project/contribution/add`,
+      `https://developer-jaskaran.onrender.com/api/v1/user/project/contribution/add`,
       {
         method: "POST",
         body: JSON.stringify(query),
@@ -450,7 +450,7 @@ async function addContributionRequest(query) {
 async function getProjectSearch(query) {
   try {
     let response = await fetch(
-      `http://127.0.0.1:4000/api/v1/user/developer/project/search?query=${query}`,
+      `https://developer-jaskaran.onrender.com/api/v1/user/developer/project/search?query=${query}`,
       {
         method: "GET",
         headers: {
@@ -497,7 +497,7 @@ async function getProjectSearch(query) {
 async function getProjectFilter(filter) {
   try {
     let response = await fetch(
-      `http://127.0.0.1:4000/api/v1/user/developer/project/filter`,
+      `https://developer-jaskaran.onrender.com/api/v1/user/developer/project/filter`,
       {
         method: "POST",
         body: JSON.stringify({
@@ -546,7 +546,7 @@ async function getProjectFilter(filter) {
 async function getSocialMedias() {
   try {
     let response = await fetch(
-      `http://127.0.0.1:4000/api/v1/user/socialmedia/all`,
+      `https://developer-jaskaran.onrender.com/api/v1/user/socialmedia/all`,
       {
         method: "GET",
         headers: {
@@ -573,7 +573,7 @@ async function getSocialMedias() {
 async function sendMessage(query) {
   try {
     let response = await fetch(
-      `http://127.0.0.1:4000/api/v1/user/contact/add`,
+      `https://developer-jaskaran.onrender.com/api/v1/user/contact/add`,
       {
         method: "POST",
         body: JSON.stringify(query),
@@ -745,7 +745,7 @@ document
       try {
         isAllProjectFetching = true;
         let response = await fetch(
-          `http://127.0.0.1:4000/api/v1/user/developer/project/all?startPoint=${allProjectStartPoint}`,
+          `https://developer-jaskaran.onrender.com/api/v1/user/developer/project/all?startPoint=${allProjectStartPoint}`,
           {
             method: "GET",
             headers: {
@@ -914,7 +914,7 @@ document
       try {
         isSearchProjectFetching = true;
         let response = await fetch(
-          `http://127.0.0.1:4000/api/v1/user/developer/project/search?startPoint=${searchProjectStartPoint}&query=${searchQuery}`,
+          `https://developer-jaskaran.onrender.com/api/v1/user/developer/project/search?startPoint=${searchProjectStartPoint}&query=${searchQuery}`,
           {
             method: "GET",
             headers: {
@@ -1023,7 +1023,7 @@ document
       try {
         isFilterProjectFetching = true;
         let response = await fetch(
-          `http://127.0.0.1:4000/api/v1/user/developer/project/filter`,
+          `https://developer-jaskaran.onrender.com/api/v1/user/developer/project/filter`,
           {
             method: "POST",
             body: JSON.stringify({
