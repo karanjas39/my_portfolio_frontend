@@ -38,11 +38,12 @@ body {
   color: var(--color1);
   font-family: "Poppins", "Courier New", Courier, monospace;
   position: relative;
+  height: 100vh;
 }
 
 /*! HEADER 1 */
 .nav-links {
-  position: absolute;
+  position: fixed;
   background-color: var(--background-color);
   border-radius: 30px;
   padding: 10px;
@@ -75,6 +76,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  height: 100vh;
 }
 
 .home-video {
@@ -110,6 +112,8 @@ section {
   justify-content: center;
   gap: 20px;
   align-items: center;
+  margin: 60px auto;
+  align-self: center;
 }
 
 .section-heading {
@@ -279,7 +283,7 @@ section {
 
 .project-list,
 .project-main {
-  height: 500px;
+  height: calc(100vh - 200px);
   display: flex;
   flex-direction: column;
   gap: 15px;

@@ -21,6 +21,12 @@
     font-size: 16px;
   }
 
+  .home-inner-container,
+  .about-inner-container,
+  .project-inner-container {
+    margin: 20px auto;
+  }
+
   .nav-links {
     flex-direction: row;
     top: unset;
