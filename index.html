@@ -25,6 +25,7 @@
     />
 
     <link rel="stylesheet" href="./CSS/index.css" />
+    <link rel="stylesheet" href="./CSS/index.responsive.css" />
   </head>
   <body onload="details()">
     <header class="header">
@@ -105,12 +106,18 @@
       <section class="project-section hide" id="project-section">
         <h1 class="section-heading">Code <span>Showcase</span>.</h1>
         <div class="project-section-top">
-          <input
-            type="text"
-            class="search-project-inp"
-            placeholder="Search project by name or description..."
-          />
-          <i class="fa-solid fa-filter"></i>
+          <div class="project-section-search-bar-container">
+            <input
+              type="text"
+              class="search-project-inp"
+              placeholder="Search project by name or description..."
+            />
+            <div class="project-containers">
+              <div class="search-results-container hide"></div>
+              <div class="filter-project-results-container hide"></div>
+            </div>
+          </div>
+          <i class="fa-solid fa-filter filter-project-btn"></i>
         </div>
         <div class="project-inner-container">
           <div class="project-list"></div>
@@ -148,7 +155,7 @@
               <span>&copy;</span>
               <span class="current-year">year</span>
             </p>
-            | Developed and Designed by Jaskaran Singh.
+            Developed and Designed by Jaskaran Singh.
           </footer>
         </div>
       </section>
@@ -161,22 +168,24 @@
         <h1 class="project-detail-title"></h1>
         <i class="fa-solid fa-xmark close-project-details"></i>
       </div>
-      <p class="project-detail-start-finish-date"></p>
-      <p class="project-detail-description"></p>
-      <div class="project-detail-links">
-        <h2>Project Links</h2>
-        <div class="project-detail-links-container"></div>
-      </div>
-      <div class="project-detail-tech-stack">
-        <h2>Project Tech Stack</h2>
-        <div class="project-detail-tech-stack-container"></div>
-      </div>
-      <div class="project-detail-contributors">
-        <div class="project-detail-contributors-top">
-          <h2>Project Contributors</h2>
-          <i class="fa-solid fa-plus add-project-contributor"></i>
+      <div class="project-detail-container-inner">
+        <p class="project-detail-start-finish-date"></p>
+        <p class="project-detail-description"></p>
+        <div class="project-detail-links">
+          <h2>Project Links</h2>
+          <div class="project-detail-links-container"></div>
         </div>
-        <div class="project-detail-contributors-container"></div>
+        <div class="project-detail-tech-stack">
+          <h2>Project Tech Stack</h2>
+          <div class="project-detail-tech-stack-container"></div>
+        </div>
+        <div class="project-detail-contributors">
+          <div class="project-detail-contributors-top">
+            <h2>Project Contributors</h2>
+            <i class="fa-solid fa-plus add-project-contributor"></i>
+          </div>
+          <div class="project-detail-contributors-container"></div>
+        </div>
       </div>
     </div>
 
@@ -221,6 +230,54 @@
           </div>
         </div>
         <button class="project-contribution-submit-btn">Submit</button>
+      </div>
+    </div>
+
+    <!-- PROJECT FILTER -->
+    <div class="project-filter-container hide">
+      <div class="project-filter-top">
+        <h2>Project Filter</h2>
+        <i class="fa-solid fa-xmark close-project-filter"></i>
+      </div>
+      <div class="project-filter-inner">
+        <div class="project-filter-fields">
+          <label for="project-filter-contributor-name">Contributor Name</label>
+          <input
+            type="text"
+            class="project-filter-contributor-name"
+            id="project-filter-contributor-name"
+            placeholder="Enter contributor name here..."
+          />
+        </div>
+        <div class="project-filter-fields">
+          <label for="project-filter-tech-stack">Tech Stack</label>
+          <select
+            id="project-filter-tech-stack"
+            class="project-filter-tech-stack"
+          ></select>
+        </div>
+        <div class="project-filter-fields">
+          <label for="project-filter-startedOn">Started from</label>
+          <input
+            type="date"
+            min="2022-01-01"
+            class="project-filter-startedOn"
+            id="project-filter-startedOn"
+          />
+        </div>
+        <div class="project-filter-fields">
+          <label for="project-filter-finsihedOn">Finished Upto</label>
+          <input
+            type="date"
+            class="project-filter-finsihedOn"
+            id="project-filter-finsihedOn"
+            min="2022-01-01"
+          />
+        </div>
+        <div class="project-filter-btns">
+          <button class="project-filter-clear-btn">Discard</button>
+          <button class="project-filter-submit-btn">Submit</button>
+        </div>
       </div>
     </div>
 

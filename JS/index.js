@@ -19,6 +19,17 @@ let isAllProjectFetching = false;
 let allProjectStartPoint = 0;
 let openedProject;
 
+// SEARCH PROJECT
+let searchProjectStartPoint = 0;
+let searchQuery;
+let isSearchProjectFetching = false;
+
+// FILTER PROJECT
+let filterProjectStartPoint = 0;
+let filterQuery;
+let isFilterProjectFetching = false;
+let isFilterBoxOpen = false;
+
 // *****************************************************************************************************FUNCTIONS
 
 // ONLOAD FUNCTION
@@ -242,11 +253,19 @@ async function developerAboutSkill() {
     let data = await response.json();
     if (!!data && data.success == true) {
       let container = document.querySelector(".skills>ul");
+      let container2 = document.querySelector(".project-filter-tech-stack");
       let result = "";
+      let result2 = "";
       data.skills.forEach((el) => {
+        result2 += `<option value="${el._id}">${el.name}</option>`;
         result += `<li><span>${el.name}</span><br /></li>`;
       });
       container.innerHTML = result;
+      container2.innerHTML = result2;
+      container2.insertAdjacentHTML(
+        "afterbegin",
+        `<option value="" selected>Select the tech stack</option>`
+      );
     }
   } catch (error) {
     console.log(`Error: ${error.toString()} in developerAboutSkill`);
@@ -425,6 +444,101 @@ async function addContributionRequest(query) {
     }
   } catch (error) {
     console.log(`Error: ${error.toString()} in addContributionRequest`);
+  }
+}
+
+async function getProjectSearch(query) {
+  try {
+    let response = await fetch(
+      `http://127.0.0.1:4000/api/v1/user/developer/project/search?query=${query}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    let data = await response.json();
+    let result = "";
+    let container = document.querySelector(".search-results-container");
+    if (!!data && data.success == true) {
+      data.projects?.forEach((el) => {
+        let highlightedTitle = el.title.replace(
+          new RegExp(query, "gi"),
+          (match) => `<span class="highlight">${match}</span>`
+        );
+        let highlightedBriefDescription = el.brief_description.replace(
+          new RegExp(query, "gi"),
+          (match) => `<span class="highlight">${match}</span>`
+        );
+        result += `<div class="project-template">
+        <div class="project-template-top">
+          <div class="project-name">${highlightedTitle}</div>
+        </div>
+        <div class="project-description">
+          ${highlightedBriefDescription}
+        </div>
+        <p class="visit-searched-project" data-id="${el._id}">
+          View Details
+        </p>
+      </div>`;
+      });
+      container.innerHTML = result;
+      searchProjectStartPoint = data.nextStartPoint;
+    } else {
+      container.innerHTML = "No project found.";
+      isSearchProjectFetching = true;
+    }
+  } catch (error) {
+    console.log(`Error: ${error.toString()} in getProjectSearch`);
+  }
+}
+
+async function getProjectFilter(filter) {
+  try {
+    let response = await fetch(
+      `http://127.0.0.1:4000/api/v1/user/developer/project/filter`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          filter,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    let data = await response.json();
+    let result = "";
+    let container = document.querySelector(".filter-project-results-container");
+    if (!!data && data.success == true) {
+      data.projects.forEach((el) => {
+        result += `<div class="project-template">
+        <div class="project-template-top">
+          <div class="project-name">${el.title}</div>
+        </div>
+        <div class="project-description">
+          ${el.brief_description}
+        </div>
+        <p class="visit-searched-project" data-id="${el._id}">
+          View Details
+        </p>
+      </div>`;
+      });
+      container.innerHTML = result;
+      filterProjectStartPoint = data.nextStartPoint;
+      document.querySelector(".project-filter-container").classList.add("hide");
+      document.querySelector(".blur").classList.add("hide");
+      document
+        .querySelector(".filter-project-results-container")
+        .classList.remove("hide");
+      isFilterBoxOpen = true;
+      document.querySelector(".filter-project-results-container").scrollTop = 0;
+    } else {
+      showNotification("No project found.");
+    }
+  } catch (error) {
+    console.log(`Error: ${error.toString()} in getProjectFilter`);
   }
 }
 
@@ -609,6 +723,7 @@ document
         .querySelector(".project-detail-container")
         .classList.remove("hide");
       document.querySelector(".blur").classList.remove("hide");
+      document.querySelector(".project-detail-container-inner").scrollTop = 0;
     }
   });
 
@@ -768,3 +883,235 @@ document.querySelector(".send-message").addEventListener("click", async () => {
   document.querySelector(".contact-email").value = "";
   document.querySelector(".contact-message").value = "";
 });
+
+// ** PROJECT SEARCH
+document
+  .querySelector(".search-project-inp")
+  .addEventListener("keydown", async (e) => {
+    let value = e.target.value.trim();
+    if (e.key == "Backspace") {
+      document.querySelector(".search-results-container").classList.add("hide");
+    }
+    if (e.key == "Enter" && value != "") {
+      searchQuery = value;
+      isSearchProjectFetching = false;
+      await getProjectSearch(searchQuery);
+      document
+        .querySelector(".search-results-container")
+        .classList.remove("hide");
+      document.querySelector(".search-results-container").scrollTop = 0;
+    }
+  });
+
+document
+  .querySelector(".search-results-container")
+  .addEventListener("scroll", async function (event) {
+    let { scrollHeight, scrollTop, clientHeight } = event.target;
+    if (
+      Math.abs(scrollHeight - clientHeight - scrollTop) < 150 &&
+      !isSearchProjectFetching
+    ) {
+      try {
+        isSearchProjectFetching = true;
+        let response = await fetch(
+          `http://127.0.0.1:4000/api/v1/user/developer/project/search?startPoint=${searchProjectStartPoint}&query=${searchQuery}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        let data = await response.json();
+        let container = document.querySelector(".search-results-container");
+        let result = "";
+        if (!!data && data.success == true) {
+          data.projects.forEach((el) => {
+            let highlightedTitle = el.title.replace(
+              new RegExp(searchQuery, "gi"),
+              (match) => `<span class="highlight">${match}</span>`
+            );
+            let highlightedBriefDescription = el.brief_description.replace(
+              new RegExp(searchQuery, "gi"),
+              (match) => `<span class="highlight">${match}</span>`
+            );
+            result += `<div class="project-template">
+            <div class="project-template-top">
+              <div class="project-name">${highlightedTitle}</div>
+            </div>
+            <div class="project-description">
+              ${highlightedBriefDescription}
+            </div>
+            <p class="visit-searched-project" data-id="${el._id}">
+              View Details
+            </p>
+          </div>`;
+          });
+          searchProjectStartPoint = data.nextStartPoint;
+          let prevScrollHeight = container.scrollHeight;
+          container.insertAdjacentHTML("beforeend", result);
+          container.scrollTop = prevScrollHeight;
+          isSearchProjectFetching = false;
+        } else {
+          isSearchProjectFetching = true;
+        }
+      } catch (error) {
+        console.log(`Error: ${error.toString()} in getSearchProjectsScroll`);
+      }
+    }
+  });
+
+// ** PROJECT FILTER
+document
+  .querySelector(".project-filter-clear-btn")
+  .addEventListener("click", async () => {
+    document.querySelector(".project-filter-tech-stack").value = "";
+    document.querySelector(".project-filter-contributor-name").value = "";
+    document.querySelector(".project-filter-startedOn").value = "";
+    document.querySelector(".project-filter-finsihedOn").value = "";
+  });
+
+document
+  .querySelector(".project-filter-submit-btn")
+  .addEventListener("click", async () => {
+    let techStack = document.querySelector(".project-filter-tech-stack").value;
+    let contributorName = document
+      .querySelector(".project-filter-contributor-name")
+      .value.trim();
+    let startedOn = document.querySelector(".project-filter-startedOn").value;
+    let finishedOn = document.querySelector(".project-filter-finsihedOn").value;
+    let data = {};
+    if (!!techStack) {
+      data.techStack = techStack;
+    }
+    if (!!contributorName) {
+      data.contributorName = contributorName;
+    }
+
+    if (!!startedOn) {
+      let [year, month, day] = startedOn.split("-");
+      const isoDate = new Date(
+        `${year}-${month}-${day}T00:00:00.000Z`
+      ).toISOString();
+      data.startedOn = isoDate;
+    }
+
+    if (!!finishedOn) {
+      let [year, month, day] = finishedOn.split("-");
+      const isoDate = new Date(
+        `${year}-${month}-${day}T00:00:00.000Z`
+      ).toISOString();
+      data.finishedOn = isoDate;
+    }
+
+    if (Object.keys(data).length == 0) {
+      return showNotification("No filter is selected.");
+    }
+    isFilterProjectFetching = false;
+    filterQuery = { ...data };
+    await getProjectFilter(filterQuery);
+  });
+
+document
+  .querySelector(".filter-project-results-container")
+  .addEventListener("scroll", async function (event) {
+    let { scrollHeight, scrollTop, clientHeight } = event.target;
+    if (
+      Math.abs(scrollHeight - clientHeight - scrollTop) < 150 &&
+      !isFilterProjectFetching
+    ) {
+      try {
+        isFilterProjectFetching = true;
+        let response = await fetch(
+          `http://127.0.0.1:4000/api/v1/user/developer/project/filter`,
+          {
+            method: "POST",
+            body: JSON.stringify({
+              filter: filterQuery,
+              startPoint: filterProjectStartPoint,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        let data = await response.json();
+        let container = document.querySelector(
+          ".filter-project-results-container"
+        );
+        let result = "";
+        if (!!data && data.success == true) {
+          data.projects.forEach((el) => {
+            result += `<div class="project-template">
+            <div class="project-template-top">
+              <div class="project-name">${el.title}</div>
+            </div>
+            <div class="project-description">
+              ${el.brief_description}
+            </div>
+            <p class="visit-searched-project" data-id="${el._id}">
+              View Details
+            </p>
+          </div>`;
+          });
+          filterProjectStartPoint = data.nextStartPoint;
+          let prevScrollHeight = container.scrollHeight;
+          container.insertAdjacentHTML("beforeend", result);
+          container.scrollTop = prevScrollHeight;
+          isFilterProjectFetching = false;
+        } else {
+          isFilterProjectFetching = true;
+        }
+      } catch (error) {
+        console.log(`Error: ${error.toString()} in getFilterProjectsScroll`);
+      }
+    }
+  });
+
+document.querySelector(".filter-project-btn").addEventListener("click", () => {
+  document.querySelector(".project-filter-container").classList.remove("hide");
+  document.querySelector(".blur").classList.remove("hide");
+  document
+    .querySelector(".filter-project-results-container")
+    .classList.add("hide");
+  isFilterBoxOpen = false;
+});
+
+document
+  .querySelector(".close-project-filter")
+  .addEventListener("click", () => {
+    document.querySelector(".project-filter-container").classList.add("hide");
+    document.querySelector(".blur").classList.add("hide");
+  });
+
+document.querySelector(".project-section").addEventListener("click", () => {
+  if (isFilterBoxOpen) {
+    document
+      .querySelector(".filter-project-results-container")
+      .classList.add("hide");
+    isFilterBoxOpen = false;
+  }
+});
+
+// ** SHOW PROJECT IN FILTER AND SEARCH
+document
+  .querySelector(".project-containers")
+  .addEventListener("click", async (e) => {
+    let target = e.target;
+    if (target.classList.contains("visit-searched-project")) {
+      let id = target.dataset.id;
+      if (!id) {
+        return showNotification(
+          "Apologies, we are currently unable to retrieve this project."
+        );
+      }
+      await getProject(id);
+      document
+        .querySelector(".project-detail-container")
+        .classList.remove("hide");
+      document.querySelector(".blur").classList.remove("hide");
+      document.querySelector(".search-results-container").classList.add("hide");
+      document.querySelector(".search-project-inp").value = "";
+      document.querySelector(".project-detail-container-inner").scrollTop = 0;
+    }
+  });
