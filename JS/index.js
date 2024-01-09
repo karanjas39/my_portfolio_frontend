@@ -1062,7 +1062,7 @@ document
     loader(1);
     await getProjectFilter(filterQuery);
     loader(0);
-    document.querySelector(".blur").classList.add("hide");
+    document.querySelector(".blur").classList.remove("hide");
   });
 
 document
