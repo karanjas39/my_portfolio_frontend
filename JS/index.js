@@ -513,6 +513,7 @@ async function getProjectFilter(filter) {
       }
     );
     let data = await response.json();
+    loader(0);
     let result = "";
     let container = document.querySelector(".filter-project-results-container");
     if (!!data && data.success == true) {
@@ -531,7 +532,6 @@ async function getProjectFilter(filter) {
       });
       container.innerHTML = result;
       filterProjectStartPoint = data.nextStartPoint;
-
       document
         .querySelector(".filter-project-results-container")
         .classList.remove("hide");
@@ -544,7 +544,6 @@ async function getProjectFilter(filter) {
       document.querySelector(".blur").classList.remove("hide");
       showNotification("No project found.");
     }
-    loader(0);
   } catch (error) {
     console.log(`Error: ${error.toString()} in getProjectFilter`);
   }
@@ -1061,8 +1060,6 @@ document
     document.querySelector(".project-filter-container").classList.add("hide");
     loader(1);
     await getProjectFilter(filterQuery);
-    loader(0);
-    document.querySelector(".blur").classList.remove("hide");
   });
 
 document
