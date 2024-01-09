@@ -38,7 +38,7 @@ body {
   color: var(--color1);
   font-family: "Poppins", "Courier New", Courier, monospace;
   position: relative;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 /*! HEADER 1 */
@@ -47,10 +47,8 @@ body {
   background-color: var(--background-color);
   border-radius: 30px;
   padding: 10px;
-  /* left: 50%; */
   top: 50%;
   right: 20px;
-  /* bottom: 20px; */
   transform: translate(0, -50%);
   display: flex;
   flex-direction: column;

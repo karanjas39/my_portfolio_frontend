@@ -1,9 +1,5 @@
 @media screen and (max-width: 440px) {
   /*! GENERAL  */
-  section {
-    padding-bottom: 30px;
-  }
-
   .section-heading {
     font-size: 32px;
   }
@@ -24,17 +20,23 @@
   .home-inner-container,
   .about-inner-container,
   .project-inner-container {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   .nav-links {
-    flex-direction: row;
-    top: unset;
-    right: unset;
-    bottom: 10px;
-    left: 50%;
-    padding: 15px;
-    transform: translate(-50%, 0);
+    all: unset;
+    background-color: var(--background-color);
+    border-radius: 30px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    align-self: center;
+    gap: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 99999999;
+    margin-bottom: 20px;
   }
 
   .download-cv {
@@ -61,6 +63,10 @@
 
   .project-inner-container {
     width: 100%;
+  }
+
+  .project-list {
+    margin-bottom: 0;
   }
 
   /*PROJECT TEMPLATE  */
@@ -118,10 +124,6 @@
 
 @media screen and (max-width: 840px) and (min-width: 439px) {
   /*! GENERAL  */
-  section {
-    padding-bottom: 60px;
-  }
-
   .section-heading {
     font-size: 38px;
   }
@@ -129,6 +131,12 @@
   /*! HOME SECTION  */
   .programmer-svg {
     width: 80%;
+  }
+
+  .home-inner-container,
+  .about-inner-container,
+  .project-inner-container {
+    margin-bottom: 10px;
   }
 
   .home-inner-container {
@@ -145,12 +153,19 @@
   }
 
   .nav-links {
-    flex-direction: row;
-    top: unset;
-    right: unset;
-    bottom: 10px;
-    left: 50%;
-    transform: translate(-50%, 0);
+    all: unset;
+    background-color: var(--background-color);
+    border-radius: 30px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    align-self: center;
+    gap: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 99999999;
+    margin-bottom: 20px;
   }
 
   .download-cv {
@@ -177,6 +192,10 @@
 
   .project-inner-container {
     width: 100%;
+  }
+
+  .project-list {
+    margin-bottom: 0;
   }
 
   /*PROJECT TEMPLATE  */
