@@ -38,7 +38,7 @@ body {
   color: var(--color1);
   font-family: "Poppins", "Courier New", Courier, monospace;
   position: relative;
-  /* height: 100vh; */
+  min-height: 100vh;
 }
 
 /*! HEADER 1 */
@@ -325,7 +325,7 @@ section {
   background-color: var(--fff);
   border-radius: 20px;
   margin-top: 10px;
-  padding: 10px;
+  padding: 20px;
   height: 300px;
   overflow-y: auto;
   width: 100%;
@@ -731,7 +731,11 @@ section {
 }
 
 footer {
-  text-align: center;
+  display: flex;
+  align-self: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
 }
 
 /*! NOTIFICATION POPUP */

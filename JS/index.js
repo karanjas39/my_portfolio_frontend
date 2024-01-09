@@ -13,11 +13,13 @@ let progressBarInterval;
 // ABOUT SECTION
 let aboutTab;
 let aboutTabButton;
+let isAboutFetched = false;
 
 // PROJECT SECTION
 let isAllProjectFetching = false;
 let allProjectStartPoint = 0;
 let openedProject;
+let isCoutriesCodeFetched = false;
 
 // SEARCH PROJECT
 let searchProjectStartPoint = 0;
@@ -30,30 +32,13 @@ let filterQuery;
 let isFilterProjectFetching = false;
 let isFilterBoxOpen = false;
 
-// *****************************************************************************************************FUNCTIONS
+// CONTACT SECTION
+let isSocialMediafetched = false;
 
+// *****************************************************************************************************FUNCTIONS
 // ONLOAD FUNCTION
 async function details() {
   try {
-    await Promise.all([
-      developerDetails(),
-      developerRoles(),
-      developerAboutExperience(),
-      developerAboutSkill(),
-      developerAboutEducation(),
-      fetchCountryCodes(),
-      getSocialMedias(),
-    ]);
-
-    if (words.length) {
-      setTimeout(type, 50);
-    }
-    document.querySelector(".current-year").textContent =
-      new Date().getFullYear();
-    prevBtn = document.querySelector(".home-i");
-    prevSectionContainer = document.querySelector(".home-section");
-    document.querySelector(".home-i").style.color = "var(--color2)";
-
     let theme = localStorage.getItem("theme");
     if (theme == "dark") {
       document.documentElement.setAttribute("data-theme", "dark");
@@ -68,6 +53,21 @@ async function details() {
       changeImages("light");
       changeTheme("light");
     }
+    loader(1);
+    await Promise.all([
+      developerDetails(),
+      developerRoles(),
+      developerAboutSkill(),
+    ]);
+    loader(0);
+    if (words.length) {
+      setTimeout(type, 50);
+    }
+    document.querySelector(".current-year").textContent =
+      new Date().getFullYear();
+    prevBtn = document.querySelector(".home-i");
+    prevSectionContainer = document.querySelector(".home-section");
+    document.querySelector(".home-i").style.color = "var(--color2)";
   } catch (error) {
     console.log(`Error: ${error.toString()} in detailsC`);
   }
@@ -196,7 +196,7 @@ async function fetchCountryCodes() {
 async function developerDetails() {
   try {
     let response = await fetch(
-      "http://127.0.0.1:4000/api/v1/user/developer/details",
+      "https://developerjaskaran.cyclic.app/api/v1/user/developer/details",
       {
         method: "GET",
         headers: {
@@ -208,6 +208,7 @@ async function developerDetails() {
     if (!!data && data.success == true) {
       document.querySelector(".developer-name").textContent =
         data.developer.name;
+      document.querySelector(".admin-name").textContent = data.developer.name;
       document.querySelector(".download-cv").href = data.developer.cv_link;
     }
   } catch (error) {
@@ -218,7 +219,7 @@ async function developerDetails() {
 async function developerRoles() {
   try {
     let response = await fetch(
-      "http://127.0.0.1:4000/api/v1/user/developer/role/all",
+      "https://developerjaskaran.cyclic.app/api/v1/user/developer/role/all",
       {
         method: "GET",
         headers: {
@@ -242,7 +243,7 @@ async function developerRoles() {
 async function developerAboutSkill() {
   try {
     let response = await fetch(
-      "http://127.0.0.1:4000/api/v1/user/developer/skill/all",
+      "https://developerjaskaran.cyclic.app/api/v1/user/developer/skill/all",
       {
         method: "GET",
         headers: {
@@ -275,7 +276,7 @@ async function developerAboutSkill() {
 async function developerAboutExperience() {
   try {
     let response = await fetch(
-      "http://127.0.0.1:4000/api/v1/user/developer/experience/all",
+      "https://developerjaskaran.cyclic.app/api/v1/user/developer/experience/all",
       {
         method: "GET",
         headers: {
@@ -302,7 +303,7 @@ async function developerAboutExperience() {
 async function developerAboutEducation() {
   try {
     let response = await fetch(
-      "http://127.0.0.1:4000/api/v1/user/developer/education/all",
+      "https://developerjaskaran.cyclic.app/api/v1/user/developer/education/all",
       {
         method: "GET",
         headers: {
@@ -330,7 +331,7 @@ async function developerAboutEducation() {
 async function getAllProjects() {
   try {
     let response = await fetch(
-      `http://127.0.0.1:4000/api/v1/user/developer/project/all`,
+      `https://developerjaskaran.cyclic.app/api/v1/user/developer/project/all`,
       {
         method: "GET",
         headers: {
@@ -363,7 +364,7 @@ async function getAllProjects() {
 async function getProject(id) {
   try {
     let response = await fetch(
-      `http://127.0.0.1:4000/api/v1/user/developer/project/one?_id=${id}`,
+      `https://developerjaskaran.cyclic.app/api/v1/user/developer/project/one?_id=${id}`,
       {
         method: "GET",
         headers: {
@@ -419,7 +420,7 @@ async function getProject(id) {
 async function addContributionRequest(query) {
   try {
     let response = await fetch(
-      `http://127.0.0.1:4000/api/v1/user/project/contribution/add`,
+      `https://developerjaskaran.cyclic.app/api/v1/user/project/contribution/add`,
       {
         method: "POST",
         body: JSON.stringify(query),
@@ -433,13 +434,13 @@ async function addContributionRequest(query) {
       document
         .querySelector(".project-detail-container")
         .classList.remove("hide");
-      document
-        .querySelector(".project-contribution-container")
-        .classList.add("hide");
       return showNotification(
         "Jaskaran Singh will be in touch with you shortly."
       );
     } else {
+      document
+        .querySelector(".project-contribution-container")
+        .classList.remove("hide");
       showNotification(data.message);
     }
   } catch (error) {
@@ -449,8 +450,9 @@ async function addContributionRequest(query) {
 
 async function getProjectSearch(query) {
   try {
+    loader(1);
     let response = await fetch(
-      `http://127.0.0.1:4000/api/v1/user/developer/project/search?query=${query}`,
+      `https://developerjaskaran.cyclic.app/api/v1/user/developer/project/search?query=${query}`,
       {
         method: "GET",
         headers: {
@@ -489,6 +491,7 @@ async function getProjectSearch(query) {
       container.innerHTML = "No project found.";
       isSearchProjectFetching = true;
     }
+    loader(0);
   } catch (error) {
     console.log(`Error: ${error.toString()} in getProjectSearch`);
   }
@@ -496,8 +499,9 @@ async function getProjectSearch(query) {
 
 async function getProjectFilter(filter) {
   try {
+    loader(1);
     let response = await fetch(
-      `http://127.0.0.1:4000/api/v1/user/developer/project/filter`,
+      `https://developerjaskaran.cyclic.app/api/v1/user/developer/project/filter`,
       {
         method: "POST",
         body: JSON.stringify({
@@ -527,16 +531,20 @@ async function getProjectFilter(filter) {
       });
       container.innerHTML = result;
       filterProjectStartPoint = data.nextStartPoint;
-      document.querySelector(".project-filter-container").classList.add("hide");
-      document.querySelector(".blur").classList.add("hide");
+
       document
         .querySelector(".filter-project-results-container")
         .classList.remove("hide");
       isFilterBoxOpen = true;
       document.querySelector(".filter-project-results-container").scrollTop = 0;
     } else {
+      document
+        .querySelector(".project-filter-container")
+        .classList.remove("hide");
+      document.querySelector(".blur").classList.remove("hide");
       showNotification("No project found.");
     }
+    loader(0);
   } catch (error) {
     console.log(`Error: ${error.toString()} in getProjectFilter`);
   }
@@ -546,7 +554,7 @@ async function getProjectFilter(filter) {
 async function getSocialMedias() {
   try {
     let response = await fetch(
-      `http://127.0.0.1:4000/api/v1/user/socialmedia/all`,
+      `https://developerjaskaran.cyclic.app/api/v1/user/socialmedia/all`,
       {
         method: "GET",
         headers: {
@@ -572,8 +580,9 @@ async function getSocialMedias() {
 
 async function sendMessage(query) {
   try {
+    loader(1);
     let response = await fetch(
-      `http://127.0.0.1:4000/api/v1/user/contact/add`,
+      `https://developerjaskaran.cyclic.app/api/v1/user/contact/add`,
       {
         method: "POST",
         body: JSON.stringify(query),
@@ -583,6 +592,7 @@ async function sendMessage(query) {
       }
     );
     let data = await response.json();
+    loader(0);
     if (!!data && data.success == true) {
       showNotification("Jaskaran Singh will be in touch with you shortly.");
     } else {
@@ -659,10 +669,29 @@ document.querySelector(".nav-links").addEventListener("click", async (e) => {
       aboutTabButton = document.querySelector(".tab-contents.skills");
       aboutTab.classList.add("active-link");
       aboutTabButton.classList.add("active-tab");
+      if (!isAboutFetched) {
+        loader(1);
+        await Promise.all([
+          developerAboutExperience(),
+          developerAboutEducation(),
+        ]);
+        isAboutFetched = true;
+        loader(0);
+      }
     }
     if (target.classList.contains("project-i")) {
       isAllProjectFetching = false;
+      loader(1);
       await getAllProjects();
+      loader(0);
+    }
+    if (target.classList.contains("contact-i")) {
+      if (!isSocialMediafetched) {
+        loader(1);
+        await getSocialMedias();
+        loader(0);
+        isSocialMediafetched = true;
+      }
     }
   }
 });
@@ -718,7 +747,9 @@ document
       if (!id) {
         return showNotification("Project details are not available.");
       }
+      loader(1);
       await getProject(id);
+      loader(0);
       document
         .querySelector(".project-detail-container")
         .classList.remove("hide");
@@ -743,9 +774,10 @@ document
       !isAllProjectFetching
     ) {
       try {
+        loader(1);
         isAllProjectFetching = true;
         let response = await fetch(
-          `http://127.0.0.1:4000/api/v1/user/developer/project/all?startPoint=${allProjectStartPoint}`,
+          `https://developerjaskaran.cyclic.app/api/v1/user/developer/project/all?startPoint=${allProjectStartPoint}`,
           {
             method: "GET",
             headers: {
@@ -772,6 +804,7 @@ document
         } else {
           isAllProjectFetching = true;
         }
+        loader(0);
       } catch (error) {
         console.log(`Error: ${error.toString()} in getAllProjectsScroll`);
       }
@@ -781,12 +814,20 @@ document
 // ** PROJECT CONTRIBUTION
 document
   .querySelector(".add-project-contributor")
-  .addEventListener("click", () => {
+  .addEventListener("click", async () => {
     document.querySelector(".project-contribution-name").value = "";
     document.querySelector(".project-contribution-email").value = "";
     document.querySelector(".project-contribution-number").value = "";
     document.querySelector(".project-contribution-number-code").value = "+91";
     document.querySelector(".project-detail-container").classList.add("hide");
+    if (!isCoutriesCodeFetched) {
+      loader(1);
+      await fetchCountryCodes();
+      isCoutriesCodeFetched = true;
+      loader(0);
+      document.querySelector(".project-contribution-number-code").value = "+91";
+      document.querySelector(".blur").classList.remove("hide");
+    }
     document
       .querySelector(".project-contribution-container")
       .classList.remove("hide");
@@ -847,7 +888,13 @@ document
       whatsapp_number: `${code.substring(1)}${whatsapp_number}`,
       project_id: _id,
     };
+    document
+      .querySelector(".project-contribution-container")
+      .classList.add("hide");
+    loader(1);
     await addContributionRequest(data);
+    loader(0);
+    document.querySelector(".blur").classList.remove("hide");
   });
 
 // ** SEND CONTACT
@@ -912,9 +959,10 @@ document
       !isSearchProjectFetching
     ) {
       try {
+        loader(1);
         isSearchProjectFetching = true;
         let response = await fetch(
-          `http://127.0.0.1:4000/api/v1/user/developer/project/search?startPoint=${searchProjectStartPoint}&query=${searchQuery}`,
+          `https://developerjaskaran.cyclic.app/api/v1/user/developer/project/search?startPoint=${searchProjectStartPoint}&query=${searchQuery}`,
           {
             method: "GET",
             headers: {
@@ -955,6 +1003,7 @@ document
         } else {
           isSearchProjectFetching = true;
         }
+        loader(0);
       } catch (error) {
         console.log(`Error: ${error.toString()} in getSearchProjectsScroll`);
       }
@@ -1009,7 +1058,11 @@ document
     }
     isFilterProjectFetching = false;
     filterQuery = { ...data };
+    document.querySelector(".project-filter-container").classList.add("hide");
+    loader(1);
     await getProjectFilter(filterQuery);
+    loader(0);
+    document.querySelector(".blur").classList.add("hide");
   });
 
 document
@@ -1021,9 +1074,10 @@ document
       !isFilterProjectFetching
     ) {
       try {
+        loader(1);
         isFilterProjectFetching = true;
         let response = await fetch(
-          `http://127.0.0.1:4000/api/v1/user/developer/project/filter`,
+          `https://developerjaskaran.cyclic.app/api/v1/user/developer/project/filter`,
           {
             method: "POST",
             body: JSON.stringify({
@@ -1062,6 +1116,7 @@ document
         } else {
           isFilterProjectFetching = true;
         }
+        loader(0);
       } catch (error) {
         console.log(`Error: ${error.toString()} in getFilterProjectsScroll`);
       }
