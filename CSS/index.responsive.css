@@ -1,127 +1,4 @@
-@media screen and (max-width: 440px) {
-  /*! GENERAL  */
-  .section-heading {
-    font-size: 32px;
-  }
-
-  /*! HOME SECTION  */
-  .programmer-svg {
-    width: 100%;
-  }
-
-  .home-text p:first-child {
-    font-size: 28px;
-  }
-
-  .home-text p:nth-child(2) {
-    font-size: 16px;
-  }
-
-  .home-inner-container,
-  .about-inner-container,
-  .project-inner-container {
-    margin-bottom: 10px;
-  }
-
-  .nav-links {
-    all: unset;
-    background-color: var(--background-color);
-    border-radius: 30px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: max-content;
-    align-self: center;
-    gap: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    margin-bottom: 20px;
-  }
-
-  .download-cv {
-    padding: 5px 10px;
-  }
-
-  /*! ABOUT SECTION  */
-  .about-svg {
-    width: 100%;
-  }
-  .about-inner-container {
-    margin-top: 10px;
-    gap: 10px;
-  }
-  .about-tab-links {
-    gap: 15px;
-  }
-
-  /*! PROJECT SECTION  */
-  .project-section,
-  .project-section-top {
-    width: 95%;
-  }
-
-  .project-inner-container {
-    width: 100%;
-  }
-
-  .project-list {
-    margin-bottom: 0;
-  }
-
-  /*PROJECT TEMPLATE  */
-  .project-name {
-    font-size: 24px;
-  }
-  .project-description {
-    font-size: 16px;
-  }
-  .view-project {
-    padding: 5px 10px;
-  }
-
-  /* PROJECT DETAILS */
-  .project-detail-start-finish-date {
-    margin-bottom: 4px;
-  }
-  .project-detail-container,
-  .project-contribution-container,
-  .project-filter-container {
-    width: 85%;
-  }
-  .project-detail-container-inner {
-    height: 350px;
-    overflow: auto;
-  }
-
-  /*! CONTACT SECTION  */
-  .contact-main-container {
-    width: 95%;
-    margin: 20px auto;
-  }
-  .contact-form {
-    gap: 20px;
-  }
-  .social-links {
-    margin-top: 20px;
-  }
-  .social-links i {
-    font-size: 18px;
-  }
-  .send-message {
-    padding: 5px 10px;
-  }
-  footer {
-    font-size: 14px;
-  }
-
-  /*! NOTIFICATION POPUP  */
-  .popup-msg-notification {
-    width: 90%;
-    font-size: 14px;
-  }
-}
-
-@media screen and (max-width: 840px) and (min-width: 439px) {
+@media screen and (max-width: 840px) {
   /*! GENERAL  */
   .section-heading {
     font-size: 38px;
@@ -140,7 +17,7 @@
 
   .home-inner-container {
     gap: 10px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
   }
 
   .home-text p:first-child {
@@ -152,18 +29,11 @@
   }
 
   .nav-links {
-    all: unset;
-    background-color: var(--background-color);
-    border-radius: 30px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: max-content;
-    align-self: center;
-    gap: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    margin-bottom: 20px;
+    display: none;
+  }
+
+  .nav-menu-btn {
+    display: block;
   }
 
   .download-cv {
@@ -173,6 +43,7 @@
   /*! ABOUT SECTION  */
   .about-svg {
     width: 100%;
+    height: 200px;
   }
   .about-inner-container {
     margin-top: 10px;
@@ -223,7 +94,6 @@
   /*! CONTACT SECTION  */
   .contact-main-container {
     width: 80%;
-    margin: 20px auto;
   }
   .contact-form {
     gap: 20px;
@@ -232,7 +102,7 @@
     margin-top: 20px;
   }
   .social-links i {
-    font-size: 18px;
+    font-size: 20px;
   }
   .send-message {
     padding: 5px 10px;

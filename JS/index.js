@@ -39,6 +39,13 @@ let isSocialMediafetched = false;
 // ONLOAD FUNCTION
 async function details() {
   try {
+    if (window.innerWidth > 840) {
+      document.querySelector(".nav-links").style.display = "flex";
+      document.querySelector(".nav-menu-btn").style.display = "none";
+    } else {
+      document.querySelector(".nav-links").style.display = "none";
+      document.querySelector(".nav-menu-btn").style.display = "block";
+    }
     let theme = localStorage.getItem("theme");
     if (theme == "dark") {
       document.documentElement.setAttribute("data-theme", "dark");
@@ -661,6 +668,10 @@ document.querySelector(".nav-links").addEventListener("click", async (e) => {
     prevBtn = target;
     target.style.color = "var(--color2)";
 
+    if (window.innerWidth <= 840) {
+      document.querySelector(".nav-links").style.display = "none";
+    }
+
     if (target.classList.contains("about-i")) {
       aboutTab?.classList.remove("active-link");
       aboutTabButton?.classList.remove("active-tab");
@@ -714,6 +725,9 @@ document.querySelector(".theme-icon").addEventListener("click", () => {
       "fa theme-icon fa-moon";
     changeImages("dark");
     changeTheme("dark");
+  }
+  if (window.innerWidth <= 840) {
+    document.querySelector(".nav-links").style.display = "none";
   }
 });
 
@@ -1167,3 +1181,23 @@ document
       document.querySelector(".project-detail-container-inner").scrollTop = 0;
     }
   });
+
+// ** NAV BAR
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 840) {
+    document.querySelector(".nav-links").style.display = "flex";
+    document.querySelector(".nav-menu-btn").style.display = "none";
+  } else {
+    document.querySelector(".nav-links").style.display = "none";
+    document.querySelector(".nav-menu-btn").style.display = "block";
+  }
+});
+
+document.querySelector(".nav-menu-btn").addEventListener("click", () => {
+  let isHidden = document.querySelector(".nav-links").style.display == "none";
+  if (isHidden) {
+    document.querySelector(".nav-links").style.display = "flex";
+  } else {
+    document.querySelector(".nav-links").style.display = "none";
+  }
+});
