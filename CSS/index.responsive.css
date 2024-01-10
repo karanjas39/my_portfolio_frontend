@@ -6,7 +6,7 @@
 
   /*! HOME SECTION  */
   .programmer-svg {
-    width: 80%;
+    width: 100%;
   }
 
   .home-inner-container,
@@ -16,8 +16,7 @@
   }
 
   .home-inner-container {
-    gap: 10px;
-    /* margin-top: 10px; */
+    gap: 25px;
   }
 
   .home-text p:first-child {
