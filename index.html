@@ -85,21 +85,41 @@
       <section class="project-section hide" id="project-section">
         <h1 class="section-heading">Code <span>Showcase</span>.</h1>
         <div class="project-section-top">
-          <div class="project-section-search-bar-container">
-            <input
-              type="text"
-              class="search-project-inp"
-              placeholder="Search project by name or description..."
-            />
-            <div class="project-containers">
-              <div class="search-results-container hide"></div>
-              <div class="filter-project-results-container hide"></div>
-            </div>
-          </div>
+          <input
+            type="text"
+            class="search-project-inp"
+            placeholder="Search project by name or description..."
+          />
           <i class="fa-solid fa-filter filter-project-btn"></i>
         </div>
         <div class="project-inner-container">
-          <div class="project-list"></div>
+          <div class="project-inner-container-project-list hide">
+            <div class="project-inner-container-top">
+              <p class="project-inner-all-number">
+                Total Projects: <span>2</span>
+              </p>
+            </div>
+            <div class="project-list"></div>
+          </div>
+          <div class="project-inner-container-search-result hide">
+            <div class="project-inner-container-top">
+              <p class="project-inner-search-number">
+                Searched results: <span>2</span>
+              </p>
+            </div>
+            <div class="search-results-container"></div>
+          </div>
+          <div class="project-inner-container-filter-result hide">
+            <div class="project-inner-container-top">
+              <p class="project-inner-filter-number">
+                Filtered results: <span>2</span>
+              </p>
+              <p class="close-project-filter-results">
+                <i class="fa-solid fa-arrow-left"></i> Back
+              </p>
+            </div>
+            <div class="filter-project-results-container"></div>
+          </div>
         </div>
       </section>
       <!-- *******************************************************************************CONTACT ME -->

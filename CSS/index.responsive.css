@@ -92,7 +92,7 @@
   }
   /*! CONTACT SECTION  */
   .contact-main-container {
-    width: 80%;
+    width: 90%;
   }
   .contact-form {
     gap: 20px;
@@ -107,6 +107,6 @@
     padding: 5px 10px;
   }
   footer {
-    font-size: 14px;
+    font-size: 13px;
   }
 }

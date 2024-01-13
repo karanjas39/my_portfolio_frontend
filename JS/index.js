@@ -1,4 +1,3 @@
-// @collapse
 let words = [];
 
 let index = 0;
@@ -30,7 +29,6 @@ let isSearchProjectFetching = false;
 let filterProjectStartPoint = 0;
 let filterQuery;
 let isFilterProjectFetching = false;
-let isFilterBoxOpen = false;
 
 // CONTACT SECTION
 let isSocialMediafetched = false;
@@ -122,6 +120,16 @@ function loader(bool) {
     }
   } catch (error) {
     console.log(`Error: ${error.toString()} in loaderC`);
+  }
+}
+
+function isWordCountExceed(text, limit) {
+  try {
+    text = text.trim();
+    var words = text.split(/\s+/);
+    return words.length <= limit;
+  } catch (error) {
+    console.log(`Error: ${error.toString()} in isWordCountExceed`);
   }
 }
 
@@ -360,8 +368,10 @@ async function getAllProjects() {
       allProjectStartPoint = data.nextStartPoint;
       container.innerHTML = result;
       container.scrollTop = 0;
+      document.querySelector(".project-inner-all-number span").textContent =
+        data.result;
     } else {
-      container.innerHTML = "No project found";
+      container.innerHTML = "No project is yet published.";
     }
   } catch (error) {
     console.log(`Error: ${error.toString()} in getAllProjects`);
@@ -487,15 +497,25 @@ async function getProjectSearch(query) {
         <div class="project-description">
           ${highlightedBriefDescription}
         </div>
-        <p class="visit-searched-project" data-id="${el._id}">
-          View Details
-        </p>
+        <button class="view-project" value="${el._id}">View Details</button>
       </div>`;
       });
       container.innerHTML = result;
       searchProjectStartPoint = data.nextStartPoint;
+      document
+        .querySelector(".project-inner-container-project-list")
+        .classList.add("hide");
+      document
+        .querySelector(".project-inner-container-search-result")
+        .classList.remove("hide");
+      document
+        .querySelector(".project-inner-container-filter-result")
+        .classList.add("hide");
+      document.querySelector(".search-results-container").scrollTop = 0;
+      document.querySelector(".project-inner-search-number span").textContent =
+        data.result;
     } else {
-      container.innerHTML = "No project found.";
+      showNotification("No project found.");
       isSearchProjectFetching = true;
     }
     loader(0);
@@ -532,18 +552,23 @@ async function getProjectFilter(filter) {
         <div class="project-description">
           ${el.brief_description}
         </div>
-        <p class="visit-searched-project" data-id="${el._id}">
-          View Details
-        </p>
+        <button class="view-project" value="${el._id}">View Details</button>
       </div>`;
       });
       container.innerHTML = result;
       filterProjectStartPoint = data.nextStartPoint;
       document
-        .querySelector(".filter-project-results-container")
+        .querySelector(".project-inner-container-project-list")
+        .classList.add("hide");
+      document
+        .querySelector(".project-inner-container-search-result")
+        .classList.add("hide");
+      document
+        .querySelector(".project-inner-container-filter-result")
         .classList.remove("hide");
-      isFilterBoxOpen = true;
       document.querySelector(".filter-project-results-container").scrollTop = 0;
+      document.querySelector(".project-inner-filter-number span").textContent =
+        data.result;
     } else {
       document
         .querySelector(".project-filter-container")
@@ -691,6 +716,16 @@ document.querySelector(".nav-links").addEventListener("click", async (e) => {
     }
     if (target.classList.contains("project-i")) {
       isAllProjectFetching = false;
+      document
+        .querySelector(".project-inner-container-project-list")
+        .classList.remove("hide");
+      document
+        .querySelector(".project-inner-container-search-result")
+        .classList.add("hide");
+      document
+        .querySelector(".project-inner-container-filter-result")
+        .classList.add("hide");
+      document.querySelector(".search-project-inp").value = "";
       loader(1);
       await getAllProjects();
       loader(0);
@@ -932,6 +967,14 @@ document.querySelector(".send-message").addEventListener("click", async () => {
   if (!emailRegex.test(email)) {
     return showNotification("Please provide a valid email address.");
   }
+  if (!isWordCountExceed(name, 5)) {
+    return showNotification("Please enter a name with a maximum of 5 words.");
+  }
+  if (!isWordCountExceed(message, 30)) {
+    return showNotification(
+      "Please limit your message to a maximum of 30 words."
+    );
+  }
   let data = {
     name,
     email,
@@ -949,17 +992,19 @@ document
   .querySelector(".search-project-inp")
   .addEventListener("keydown", async (e) => {
     let value = e.target.value.trim();
-    if (e.key == "Backspace") {
-      document.querySelector(".search-results-container").classList.add("hide");
-    }
+    document
+      .querySelector(".project-inner-container-project-list")
+      .classList.remove("hide");
+    document
+      .querySelector(".project-inner-container-search-result")
+      .classList.add("hide");
+    document
+      .querySelector(".project-inner-container-filter-result")
+      .classList.add("hide");
     if (e.key == "Enter" && value != "") {
       searchQuery = value;
       isSearchProjectFetching = false;
       await getProjectSearch(searchQuery);
-      document
-        .querySelector(".search-results-container")
-        .classList.remove("hide");
-      document.querySelector(".search-results-container").scrollTop = 0;
     }
   });
 
@@ -1003,9 +1048,7 @@ document
             <div class="project-description">
               ${highlightedBriefDescription}
             </div>
-            <p class="visit-searched-project" data-id="${el._id}">
-              View Details
-            </p>
+            <button class="view-project" value="${el._id}">View Details</button>
           </div>`;
           });
           searchProjectStartPoint = data.nextStartPoint;
@@ -1114,9 +1157,7 @@ document
             <div class="project-description">
               ${el.brief_description}
             </div>
-            <p class="visit-searched-project" data-id="${el._id}">
-              View Details
-            </p>
+            <button class="view-project" value="${el._id}">View Details</button>
           </div>`;
           });
           filterProjectStartPoint = data.nextStartPoint;
@@ -1137,10 +1178,16 @@ document
 document.querySelector(".filter-project-btn").addEventListener("click", () => {
   document.querySelector(".project-filter-container").classList.remove("hide");
   document.querySelector(".blur").classList.remove("hide");
+  document.querySelector(".search-project-inp").value = "";
   document
-    .querySelector(".filter-project-results-container")
+    .querySelector(".project-inner-container-project-list")
+    .classList.remove("hide");
+  document
+    .querySelector(".project-inner-container-search-result")
     .classList.add("hide");
-  isFilterBoxOpen = false;
+  document
+    .querySelector(".project-inner-container-filter-result")
+    .classList.add("hide");
 });
 
 document
@@ -1150,36 +1197,18 @@ document
     document.querySelector(".blur").classList.add("hide");
   });
 
-document.querySelector(".project-section").addEventListener("click", () => {
-  if (isFilterBoxOpen) {
-    document
-      .querySelector(".filter-project-results-container")
-      .classList.add("hide");
-    isFilterBoxOpen = false;
-  }
-});
-
-// ** SHOW PROJECT IN FILTER AND SEARCH
 document
-  .querySelector(".project-containers")
-  .addEventListener("click", async (e) => {
-    let target = e.target;
-    if (target.classList.contains("visit-searched-project")) {
-      let id = target.dataset.id;
-      if (!id) {
-        return showNotification(
-          "Apologies, we are currently unable to retrieve this project."
-        );
-      }
-      await getProject(id);
-      document
-        .querySelector(".project-detail-container")
-        .classList.remove("hide");
-      document.querySelector(".blur").classList.remove("hide");
-      document.querySelector(".search-results-container").classList.add("hide");
-      document.querySelector(".search-project-inp").value = "";
-      document.querySelector(".project-detail-container-inner").scrollTop = 0;
-    }
+  .querySelector(".close-project-filter-results")
+  .addEventListener("click", () => {
+    document
+      .querySelector(".project-inner-container-project-list")
+      .classList.remove("hide");
+    document
+      .querySelector(".project-inner-container-search-result")
+      .classList.add("hide");
+    document
+      .querySelector(".project-inner-container-filter-result")
+      .classList.add("hide");
   });
 
 // ** NAV BAR
