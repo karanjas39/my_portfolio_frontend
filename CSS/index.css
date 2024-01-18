@@ -518,7 +518,6 @@ section {
 
 .project-detail-links-container a {
   color: var(--color1);
-  text-decoration: none;
 }
 
 .project-detail-links-container a:hover,
