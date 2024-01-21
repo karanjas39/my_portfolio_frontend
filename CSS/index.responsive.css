@@ -16,7 +16,8 @@
   }
 
   .home-inner-container {
-    gap: 25px;
+    gap: 40px;
+    margin-top: 25%;
   }
 
   .home-text p:first-child {
