@@ -109,4 +109,9 @@
   footer {
     font-size: 13px;
   }
+
+  /*! NOTIFICATION  */
+  .popup-msg-notification {
+    width: 90%;
+  }
 }
